@@ -1,0 +1,71 @@
+form {
+  padding: 20px;
+}
+
+.erro {
+  font-family: "Urbanist", Arial, sans-serif;
+  color: white;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 25px auto;
+}
+
+.form-group label {
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  font-family: "Urbanist", Arial, sans-serif;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid white;
+  color: white;
+  padding: 10px 5px;
+  font-size: 1rem;
+}
+
+.checkbox label {
+  font-family: Urbanist, Arial, sans-serif;
+  font-weight: 300;
+}
+
+a {
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: Quicksand, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #1c1c1c;
+  border: 2px solid white;
+  border-radius: 25px;
+  width: 220px;
+  padding: 10px 15px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  color: rgb(255, 70, 70);
+  border-color: rgb(255, 70, 70)
+}
+
+/*
+  color: var(--red);
+  border-color: var(--red);
+*/
