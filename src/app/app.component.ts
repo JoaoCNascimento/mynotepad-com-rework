@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faDoorOpen, faNotesMedical, faSignature, faSignInAlt, faStickyNote, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'mynotepad-frontend';
+
+  faUser = faUser;
+  faNotes = faStickyNote;
+  faDoorOpen = faDoorOpen;
+  faSignIn = faSignInAlt;
+  faUserPlus = faUserPlus;
+
+  title = 'Mynotepad';
+
+  isLogged: boolean = false;
 }
