@@ -1,1 +1,145 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+:root {
+  --blue: #2554ff;
+  --blue-dark: rgb(22, 69, 240);
+  --red: #ff5757;
+  --red-dark: #ff3e3e;
+  --yellow: #fff370;
+  --yellow-dark: #d6ca41;
+  --green: #7bdd75;
+  --green-dark: #65d35d;
+  --black: #2c2c2c;
+  --black-variation: #1f1f1f;
+  --white: #FFF;
+  --gray-light: #CCC;
+  --pink: #db3c8c;
+  --pink-dark: #cf3080;
+
+  --primary-font: Quicksand, Arial, sans-serif;
+  --secondary-font: Urbanist, Arial, sans-serif
+}
+
+body {
+  background-color: #1c1c1c;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--primary-font);
+  color: white;
+  padding: 30px 25px;
+  background-color: #2c2c2c;
+}
+
+header a h1 {
+  color: white;
+}
+
+header div a {
+  border: 2px solid white;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 5px;
+  color: #FFF;
+  font-weight: bold;
+}
+
+header div a:hover {
+  background-color: white;
+  color: #1c1c1c;
+  transition: 0.25s;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+  font-family: var(--primary-font);
+  margin-bottom: 15px;
+  color: white;
+}
+
+/* note colors */
+
+.blue .title {
+  color: white;
+  background-color: var(--blue-dark);
+}
+
+.blue .description {
+  color: white;
+  background-color: var(--blue);
+}
+
+.red .title {
+  color: white;
+  background-color: var(--red-dark);
+}
+
+.red .description {
+  color: rgba(255, 255, 255, 0.829);
+  background-color: var(--red);
+}
+
+.yellow .title {
+  color: #2c2c2c;
+  background-color: var(--yellow-dark);
+}
+
+.yellow .description {
+  color: #2c2c2c;
+  background-color: var(--yellow);
+}
+
+.pink .title {
+  color: white;
+  background-color: var(--pink-dark);
+}
+
+.pink .description {
+  color: rgba(255, 255, 255, 0.829);
+  background-color: var(--pink);
+}
+
+.green .title {
+  color: #2c2c2c;
+  background-color: var(--green-dark);
+}
+
+.green .description {
+  color: #2c2c2c;
+  background-color: var(--green);
+}
+
+.black .title {
+  color: white;
+  background-color: #131313;
+}
+
+.black .description {
+  color: rgba(255, 255, 255, 0.829);
+  background-color: #1d1d1d;
+}
+
+.white .title {
+  color: var(--black);
+  background-color: rgb(224, 222, 222);
+}
+
+.white .description {
+  color: var(--black);
+  background-color: white;
+}
