@@ -1,0 +1,160 @@
+* {
+  border: none;
+  outline: none;
+}
+
+#container {
+  padding: 25px
+}
+
+a {
+  color: white;
+  font-size: 1.2rem;
+  font-family: var(--primary-font);
+  border: 2px solid white;
+  border-radius: 25px;
+  padding: 5px 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 25px auto;
+  background-color: transparent;
+}
+
+input[type=text] {
+  font-size: 1.6rem;
+  height: 10vh;
+  padding: 25px;
+  font-family: var(--primary-font);
+  font-weight: bold;
+}
+
+textarea {
+  padding: 25px;
+  height: 45vh;
+  font-family: var(--secondary-font);
+  font-size: 1.4rem;
+}
+
+#panel {
+  display: flex;
+}
+
+#panel button {
+  font-family: Quicksand, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #1c1c1c;
+  border: 2px solid white;
+  width: 50%;
+  padding: 10px 15px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#panel button:nth-child(1) {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
+#panel button:nth-child(2) {
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+h2 {
+  margin-top: 15px;
+  font-family: var(--primary-font);
+  color: #FFF;
+}
+
+.erro {
+  font-size: 1.2rem;
+  color: var(--red);
+  font-family: var(--primary-font);
+  margin-bottom: 15px;
+  padding: 10px 5px;
+  border: 1px solid var(--red);
+  border-radius: 5px;
+}
+
+#color-panel {
+  margin: 5px 0px 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#color-panel div {
+  width: 40px;
+  height: 35px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#color-panel div:hover {
+  transform: scale(0.85, 0.85);
+
+}
+
+#color-panel .blue {
+  background-color: var(--blue);
+}
+
+#color-panel .red {
+  background-color: var(--red);
+}
+
+#color-panel .yellow {
+  background-color: var(--yellow);
+}
+
+#color-panel .green {
+  background-color: var(--green);
+}
+
+#color-panel .pink {
+  background-color: var(--pink);
+}
+
+#color-panel .white {
+  background-color: var(--white);
+}
+
+#color-panel .black {
+  background-color: var(--black);
+}
+
+#color-panel .orange {
+  background-color: var(--orange);
+}
+
+@media screen and (max-width: 600px) {
+
+  form {
+    width: 95%;
+  }
+
+  input[type=text] {
+    font-size: 5vw;
+  }
+
+  textarea {
+    font-size: 4vw;
+  }
+
+}
+
+@media screen and (min-height: 1081px) {
+  input[type=text] {
+    height: 100px
+  }
+
+  textarea {
+    height: 500px
+  }
+}

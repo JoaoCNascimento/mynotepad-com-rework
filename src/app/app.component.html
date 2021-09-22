@@ -2,29 +2,42 @@
   <a routerLink="">
     <h1>MyNotepad</h1>
   </a>
-  <div *ngIf="isLogged">
-    <a routerLink="/minhas-anotacoes">
+  <div *ngIf="isLogged" class="aside">
+    <a routerLink="/minhas-anotacoes" routerLinkActive="active">
       <fa-icon [icon]="faNotes"></fa-icon>
       Anotações
     </a>
-    <a>
+
+    <a routerLinkActive="active">
       <fa-icon [icon]="faUser"></fa-icon>
       Meu Perfil
     </a>
-    <a>
+
+    <a routerLinkActive="active">
       <fa-icon [icon]="faDoorOpen"></fa-icon>
       Sair
     </a>
   </div>
-  <div *ngIf="!isLogged">
-    <a routerLink="/login">
+  <fa-icon [icon]="faBars" id="hamburguer" (click)="showMenu()"></fa-icon>
+  <!---->
+  <div *ngIf="!isLogged" class="aside">
+    <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
+
+    <a routerLink="/minhas-anotacoes" routerLinkActive="active">
+      <fa-icon [icon]="faNotes"></fa-icon>
+      Anotações
+    </a>
+
+    <a routerLink="/login" routerLinkActive="active">
       <fa-icon [icon]="faSignIn"></fa-icon>
       Login
     </a>
-    <a routerLink="/cadastrar">
+
+    <a routerLink="/cadastrar" routerLinkActive="active">
       <fa-icon [icon]="faUserPlus"></fa-icon>
       Cadastrar-se
     </a>
+
   </div>
 </header>
 <router-outlet></router-outlet>

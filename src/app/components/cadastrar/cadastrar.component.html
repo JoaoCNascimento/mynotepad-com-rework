@@ -1,20 +1,24 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
   <div class="form-group">
-    <label for="">Nome</label>
+    <label for="name">Nome</label>
     <input type="text" placeholder="Digite seu nome" formControlName="name">
   </div>
 
-  <div class="erro" *ngIf="!this.form.get('name').valid && this.form.get('name').touched">
-    O nome deve ter um tamanho entre 3 e 255 caracteres.
+  <div class="error" *ngIf="!this.form.get('name').valid && this.form.get('name').touched">
+    <small>O nome deve ter um tamanho entre 3 e 255 caracteres.</small>
   </div>
 
   <div class="form-group">
     <label for="">Email</label>
-    <input type="text" placeholder="Digite seu email" formControlName="email">
+    <input type="text" placeholder="Digite seu email" formControlName="email" (change)="validateEmail()">
   </div>
 
-  <div class="erro" *ngIf="!this.form.get('email').valid && this.form.get('email').touched">
-    Digite um email válido.
+  <div class="error" *ngIf="!this.form.get('email').valid && this.form.get('email').touched">
+    <small>Digite um email válido.</small>
+  </div>
+
+  <div class="error" *ngIf="emailAlreadyTaken">
+    <small>Este email já está em uso.</small>
   </div>
 
   <div class="form-group">
@@ -22,34 +26,37 @@
     <input type="date" formControlName="birthDate">
   </div>
 
-  <div class="erro" *ngIf="!this.form.get('birthDate').valid && this.form.get('birthDate').touched">
-    Digite a sua data de nascimento.
+  <div class="error" *ngIf="!this.form.get('birthDate').valid && this.form.get('birthDate').touched">
+    <small>Digite a sua data de nascimento.</small>
   </div>
 
   <div class="form-group">
     <label for="">Senha</label>
-    <input type="text" placeholder="Digite sua senha" formControlName="password" (keyup)="checkPasswordValidation()">
+    <input type="text" placeholder="Digite sua senha" formControlName="password">
   </div>
 
-  <div class=" erro" *ngIf="!this.form.get('password').valid && this.form.get('password').touched">
-    A senha deve possuir ao menos 6 caracteres.
+  <div class="error" *ngIf="!this.form.get('password').valid && this.form.get('password').touched">
+    <small>A senha deve possuir ao menos 6 caracteres.</small>
   </div>
 
   <div class="form-group">
     <label for="">Confirmar senha</label>
-    <input type="text" placeholder="Digite novamente sua senha" formControlName="passwordConfirm"
-      (keyup)="checkPasswordValidation()">
+    <input type="text" placeholder="Digite novamente sua senha" formControlName="passwordConfirm">
   </div>
 
-  <div class="erro" *ngIf="!this.form.get('passwordConfirm').valid && this.form.get('passwordConfirm').touched">
-    Verifique se as senhas digitadas são iguais.
+  <div class="error" *ngIf="!this.form.get('passwordConfirm').valid && this.form.get('passwordConfirm').touched">
+    <small>Verifique se as senhas digitadas são iguais.</small>
   </div>
 
-  <div class="form-group checkbox">
+  <div class="form-group checkbox agreement">
     <label for="agreement">
-      <input type="checkbox" name="agreement" id="agreement" formControlName="agreement">
-      Eu li e concordo com os <a routerLink="privacy">termos de uso</a>.
+      <input type="checkbox" name="agreement" formControlName="agreement">
+      Eu li e concordo com os <a routerLink="privacy" target="blank">termos de uso</a>.
     </label>
+  </div>
+
+  <div class="error checkbox-error" *ngIf="this.form.get('agreement').pending">
+    <small>Para prosseguir, você deve concordar com os termos de uso.</small>
   </div>
 
   <button class="glow-on-hover">Cadastrar-se</button>

@@ -2,9 +2,15 @@ form {
   padding: 20px;
 }
 
-.erro {
+.error {
   font-family: "Urbanist", Arial, sans-serif;
   color: white;
+  margin-top: -15px;
+}
+
+.error.checkbox-error {
+  margin-top: -10px;
+  margin-bottom: 25px;
 }
 
 .form-group {
@@ -26,9 +32,9 @@ form {
   border: none;
   outline: none;
   border-bottom: 2px solid white;
-  color: white;
   padding: 10px 5px;
   font-size: 1rem;
+  color: rgb(221, 221, 221);
 }
 
 .checkbox label {
@@ -64,8 +70,3 @@ button {
   color: rgb(255, 70, 70);
   border-color: rgb(255, 70, 70)
 }
-
-/*
-  color: var(--red);
-  border-color: var(--red);
-*/

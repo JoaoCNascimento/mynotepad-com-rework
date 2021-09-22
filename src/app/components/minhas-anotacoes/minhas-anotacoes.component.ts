@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/models/Note';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -17,7 +17,8 @@ export class MinhasAnotacoesComponent implements OnInit {
 
   constructor(
     private localStoredNotes: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class MinhasAnotacoesComponent implements OnInit {
   }
 
   editNote(e) {
-    this.router.navigate(['editar-nota', e])
+    console.log(e);
+    this.router.navigate(['editar-anotacao', e], { relativeTo: this.route });
   }
 }

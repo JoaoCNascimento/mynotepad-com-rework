@@ -1,0 +1,52 @@
+form {
+  padding: 20px;
+}
+
+.error {
+  font-family: "Urbanist", Arial, sans-serif;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 25px auto;
+}
+
+.form-group label {
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  font-family: "Urbanist", Arial, sans-serif;
+  background: none;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid white;
+  padding: 10px 5px;
+  font-size: 1rem;
+  color: rgb(221, 221, 221);
+}
+
+button {
+  font-family: Quicksand, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #1c1c1c;
+  border: 2px solid white;
+  border-radius: 25px;
+  width: 220px;
+  padding: 10px 15px;
+  color: white;
+  outline: none;
+  cursor: pointer;
+}
+
+.ng-invalid.ng-touched:not(form) {
+  color: rgb(255, 70, 70);
+  border-color: rgb(255, 70, 70)
+}

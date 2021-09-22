@@ -4,24 +4,31 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CadastrarModule } from './modules/cadastrar/cadastrar.module';
-import { EditarNotaComponent } from './components/minhas-anotacoes/editar-nota/editar-nota.component';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthorizedInterceptor } from './interceptors/authorized.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    CadastrarModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    CookieService,
+    [
+      { provide: HTTP_INTERCEPTORS, useClass: AuthorizedInterceptor, multi: true }
+    ]
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

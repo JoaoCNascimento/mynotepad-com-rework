@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { User } from '../models/User';
 
 @Injectable({
@@ -9,15 +9,16 @@ import { User } from '../models/User';
 })
 export class UserApiService {
 
-  private baseUrl: string = "http://localhost:3000/user";
+  private baseUrl: string = "http://localhost:8089/api/v1/user";
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   create(user: User): Observable<any> {
+    console.log(user);
+
     return this.httpClient.post(this.baseUrl, {
-      id: Date.now(),
       name: user.name,
       email: user.email,
       birthDate: user.birthDate,
@@ -35,5 +36,18 @@ export class UserApiService {
 
   deleteOne(): Observable<any> {
     return this.httpClient.delete(this.baseUrl);
+  }
+
+  login(email: string, password: string) {
+    return this.httpClient.post(this.baseUrl + '/login', {
+      email, password
+    }).pipe(
+      map(res => { return res }),
+      catchError(er => { return er; })
+    );
+  }
+
+  logout() {
+    return this.httpClient.get(this.baseUrl + '/login');
   }
 }

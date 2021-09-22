@@ -24,7 +24,10 @@
         <fa-icon [icon]="faExclamation"></fa-icon> O campo de descrição não pode ficar vazio.
       </div>
   
-      <button>Salvar</button>
+      <div id="panel">
+        <button>Salvar</button>
+        <button (click)="excluirNota()">Excluir</button>
+      </div>
     </form>
   </div>
   

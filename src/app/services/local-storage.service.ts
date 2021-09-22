@@ -7,34 +7,56 @@ import { Note } from '../models/Note';
 export class LocalStorageService {
 
   constructor() {
-    localStorage.getItem('note');
+
   }
 
   findAll(): Note[] {
     return JSON.parse(localStorage.getItem('notes')) || [];
   }
 
-  findOne() {
+  findOne(id: number): Note {
+    let notes: Note[] = this.findAll();
+    let note: Note;
 
+    notes.forEach(element => {
+      if (element.id === id) {
+        note = element;
+      };
+    })
+
+    return note;
   }
 
   create(note: Note) {
-
-    let notes = new Array();
-
-    if (localStorage.hasOwnProperty('notes'))
-      notes = JSON.parse(localStorage.getItem('notes'));
+    let notes: Note[] = JSON.parse(localStorage.getItem('notes')) || new Array();
 
     notes.push(note);
 
     localStorage.setItem('notes', JSON.stringify(notes));
   }
 
-  updateOne() {
+  updateOne(note: Note) {
+    let notes: Note[] = JSON.parse(localStorage.getItem('notes')) || new Array();
 
+    let newNoteIndex = notes.findIndex((element) => {
+      if (element.id === note.id) {
+        return true;
+      }
+    });
+
+    notes[newNoteIndex] = note;
+    localStorage.setItem('notes', JSON.stringify(notes));
   }
 
-  deleteOne() {
+  deleteOne(note) {
+    let notes: Note[] = JSON.parse(localStorage.getItem('notes')) || new Array();
 
+    let newNote = notes.findIndex((element) => {
+      if (element.id === note.id) { return true; }
+    });
+
+    notes.splice(newNote, 1);
+
+    localStorage.setItem('notes', JSON.stringify(notes));
   }
 }

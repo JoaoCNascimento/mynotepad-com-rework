@@ -83,8 +83,8 @@ h2 {
 }
 
 #color-panel div:hover {
-  transform: scale(0.85,0.85);
-  
+  transform: scale(0.85, 0.85);
+
 }
 
 #color-panel .blue {
@@ -113,6 +113,10 @@ h2 {
 
 #color-panel .black {
   background-color: var(--black);
+}
+
+#color-panel .orange {
+  background-color: var(--orange);
 }
 
 @media screen and (max-width: 600px) {

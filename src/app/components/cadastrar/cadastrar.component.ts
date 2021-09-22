@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/models/User';
+import { CustomValidatorService } from 'src/app/services/custom-validator.service';
 import { UserApiService } from 'src/app/services/user-api.service';
 
 @Component({
@@ -11,11 +15,14 @@ export class CadastrarComponent implements OnInit {
 
   form: FormGroup;
 
-  validatePassword: boolean = true;
+  emailAlreadyTaken: boolean = false;
 
   constructor(
     private fb: FormBuilder,
-    private userApiService: UserApiService
+    private userApiService: UserApiService,
+    private customValidatorService: CustomValidatorService,
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -55,36 +62,48 @@ export class CadastrarComponent implements OnInit {
       passwordConfirm: [null, {
         validators: [
           Validators.required,
-          Validators.minLength(6),
+          Validators.minLength(6)
         ]
       }],
-
-      agreement: [, {
-      }]
+      agreement: [null,]
+    }, {
+      validators: [
+        this.customValidatorService.passwordMatchValidator("password", "passwordConfirm"),
+      ]
     });
-  }
-
-  checkPasswordValidation() {
-
-    if (this.form.get('password').value === this.form.get('passwordConfirm').value) {
-      this.form.get('passwordConfirm').setErrors({ 'incorrect': true })
-      return this.validatePassword = true;
-    }
-
-    return this.validatePassword = false;
   }
 
   onSubmit() {
 
     if (this.form.valid && !this.form.get('agreement').value) {
-      console.log("Você deve aceitar os termos de uso.")
+      this.form.get('agreement').markAsPending();
     }
 
     if (this.form.valid) {
+      let user: User = {
+        id: undefined,
+        name: this.form.get('name').value,
+        birthDate: this.form.get('birthDate').value,
+        email: this.form.get('email').value,
+        password: this.form.get('password').value
+      }
 
+      this.userApiService.create(user).subscribe(res => {
+        if (res.hasOwnProperty("error_message")) {
+          this.form.get('email').markAsPending();
+          return this.toastr.error(res.error_message);
+        }
+
+        this.toastr.success("Cadastrado com sucesso!");
+        return this.router.navigate(['minhas-anotacoes']);
+      });
     }
     else {
       this.form.markAllAsTouched();
     }
+  }
+
+  validateEmail() {
+    this.emailAlreadyTaken = !this.emailAlreadyTaken;
   }
 }

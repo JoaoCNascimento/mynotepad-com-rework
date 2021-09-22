@@ -8,6 +8,7 @@ import { CadastrarComponent } from 'src/app/components/cadastrar/cadastrar.compo
 
 import { UserApiService } from 'src/app/services/user-api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomValidatorService } from 'src/app/services/custom-validator.service';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    UserApiService
+    UserApiService,
+    CustomValidatorService
   ]
 })
 export class CadastrarModule { }
