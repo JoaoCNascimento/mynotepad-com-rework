@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faArrowLeft, faExclamation, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 import { Note } from 'src/app/models/Note';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import colorsArray from 'src/app/shared/colors';
 
 @Component({
   selector: 'app-editar-nota',
@@ -16,9 +16,6 @@ export class EditarNotaComponent implements OnInit {
   faExclamation = faExclamation;
   faPlus = faPlus;
   faArrowLeft = faArrowLeft;
-  // Color array that will be rendered to give user 
-  // the colors options
-  colors = colorsArray;
   // variable that contains the standard note form colors
   // and the value that will be passed to note object.
   color = "blue";
@@ -60,10 +57,6 @@ export class EditarNotaComponent implements OnInit {
     this.color = this.note.color;
   }
 
-  colorChange(e) {
-    this.color = e.target.className;
-  }
-
   onSubmit() {
     if (this.form.valid) {
 
@@ -83,5 +76,10 @@ export class EditarNotaComponent implements OnInit {
   excluirNota() {
     this.ls.deleteOne(this.note);
     this.router.navigate(['/minhas-anotacoes']);
+  }
+
+  setColor(e) {
+    // console.log(e);
+    this.color = e;
   }
 }

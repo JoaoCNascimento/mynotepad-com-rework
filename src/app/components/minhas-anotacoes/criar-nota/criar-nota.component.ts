@@ -5,7 +5,6 @@ import { faArrowLeft, faCheck, faExclamation } from '@fortawesome/free-solid-svg
 
 import { Note } from 'src/app/models/Note';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
-import colorsArray from 'src/app/shared/colors';
 
 @Component({
   selector: 'app-criar-nota',
@@ -21,7 +20,7 @@ export class CriarNotaComponent implements OnInit {
   form: FormGroup;
   // Color array that will be rendered to give user 
   // the colors options
-  colors = colorsArray;
+  colors = [];
   // variable that contains the standard note form colors
   // and the value that will be passed to note object.
   color = "blue";
@@ -77,8 +76,9 @@ export class CriarNotaComponent implements OnInit {
       this.form.markAllAsTouched();
   }
 
-  colorChange(e) {
-    this.color = e.target.className;
+  setColor(e) {
+    // console.log(e);
+    this.color = e;
   }
 
 }
