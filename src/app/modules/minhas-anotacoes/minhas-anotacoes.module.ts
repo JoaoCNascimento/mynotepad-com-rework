@@ -8,13 +8,15 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CriarNotaComponent } from 'src/app/components/minhas-anotacoes/criar-nota/criar-nota.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarNotaComponent } from 'src/app/components/minhas-anotacoes/editar-nota/editar-nota.component';
+import { ColorsComponent } from 'src/app/shared/components/colors/colors.component';
 
 
 @NgModule({
   declarations: [
     MinhasAnotacoesComponent,
     CriarNotaComponent,
-    EditarNotaComponent
+    EditarNotaComponent,
+    ColorsComponent
   ],
   imports: [
     CommonModule,
