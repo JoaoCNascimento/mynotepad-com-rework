@@ -6,25 +6,26 @@
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
+  font-family: var(--secondary-font);
 }
 
 :root {
-  --blue: #2554ff;
-  --blue-dark: rgb(22, 69, 240);
+  --blue: #426bff;
+  --blue-dark: rgb(46, 85, 224);
   --red: #ff5757;
-  --red-dark: #ff3e3e;
+  --red-dark: #e93b3b;
   --yellow: #fff370;
   --yellow-dark: #d6ca41;
   --orange: #ff9431;
   --orange-dark: #eb811f;
   --green: #7bdd75;
-  --green-dark: #65d35d;
+  --green-dark: #58b951;
   --black: #2c2c2c;
   --black-variation: #1f1f1f;
   --white: #FFF;
   --gray-light: #CCC;
   --pink: #db3c8c;
-  --pink-dark: #cf3080;
+  --pink-dark: #c72b79;
 
   --primary-font: Quicksand, Arial, sans-serif;
   --secondary-font: Urbanist, Arial, sans-serif
@@ -46,6 +47,7 @@ header {
 
 header a h1 {
   color: white;
+  font-family: var(--primary-font);
 }
 
 header div a {
