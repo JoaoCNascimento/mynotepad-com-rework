@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,9 +22,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private user_api_service: UserApiService,
-    private router: Router,
-    private cookie: CookieService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +52,10 @@ export class LoginComponent implements OnInit {
       this.form.markAllAsTouched();
     }
 
-    this.user_api_service.login(this.form.get('email').value, this.form.get('password').value).subscribe(
+    let email = this.form.get('email').value;
+    let password = this.form.get('password').value;
+
+    this.authService.login(email, password).subscribe(
       (res) => {
 
         let response: any = res;
@@ -64,8 +67,7 @@ export class LoginComponent implements OnInit {
           return;
         }
 
-        this.cookie.set('jwt', response.token);
-        this.router.navigate(['minhas-anotacoes']);
+        window.location.assign('minhas-anotacoes');
       })
   }
 
