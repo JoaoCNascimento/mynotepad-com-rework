@@ -95,7 +95,7 @@ export class CadastrarComponent implements OnInit {
         }
 
         this.toastr.success("Cadastrado com sucesso!");
-        return this.router.navigate(['minhas-anotacoes']);
+        return window.location.assign('minhas-anotacoes');
       });
     }
     else {
