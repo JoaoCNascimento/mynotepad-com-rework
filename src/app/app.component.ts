@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faBars, faDoorOpen, faSignInAlt, faStickyNote, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import { AuthService } from './services/auth.service';
+import { LoaderService } from './services/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -23,16 +24,18 @@ export class AppComponent implements OnInit {
   isLogged: boolean = false;
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    public loaderService: LoaderService
   ) {
 
   }
 
   ngOnInit() {
-    console.log('working')
-    this.authService.showMenu.subscribe(
-      logged => this.isLogged = logged
-    )
+    this.authService.isLogged.subscribe(res => this.isLogged = res);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   /*
