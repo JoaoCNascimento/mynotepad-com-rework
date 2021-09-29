@@ -12,6 +12,8 @@ export class UserApiService {
 
   private baseUrl: string = "http://localhost:8089/api/v1/user";
 
+  private readonly TOKEN = "token";
+
   constructor(
     private httpClient: HttpClient,
     private toastrService: ToastrService
@@ -25,7 +27,13 @@ export class UserApiService {
       email: user.email,
       birthDate: user.birthDate,
       password: user.password
-    });
+    }).pipe(
+      map((res: any) => {
+        localStorage.setItem(this.TOKEN, res.token);
+        return res;
+      }),
+      catchError(er => { this.errMessages(); console.log(er); return er })
+    );
   }
 
   findOne(): Observable<any> {
@@ -38,19 +46,6 @@ export class UserApiService {
 
   deleteOne(): Observable<any> {
     return this.httpClient.delete(this.baseUrl);
-  }
-
-  login(email: string, password: string) {
-    return this.httpClient.post(this.baseUrl + '/login', {
-      email, password
-    }).pipe(
-      map(res => { return res }),
-      catchError(er => { this.errMessages(); return er })
-    );
-  }
-
-  logout() {
-    return this.httpClient.get(this.baseUrl + '/login');
   }
 
   errMessages() {
