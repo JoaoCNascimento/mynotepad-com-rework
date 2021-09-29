@@ -10,25 +10,30 @@ import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Interceptors
-import { AuthorizedInterceptor } from './interceptors/authorized.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
+import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LoaderProviderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
   providers: [
     CookieService,
     [
-      { provide: HTTP_INTERCEPTORS, useClass: AuthorizedInterceptor, multi: true }
+      AuthInterceptorProvider,
+      LoaderProviderInterceptor
     ]
   ],
   bootstrap: [AppComponent]
