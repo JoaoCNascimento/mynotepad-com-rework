@@ -1,8 +1,10 @@
+<app-loader *ngIf="loaderService.isLoading | async"></app-loader>
 <header>
   <a routerLink="">
     <h1>MyNotepad</h1>
   </a>
   <div *ngIf="isLogged" class="aside">
+    <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
     <a routerLink="/minhas-anotacoes" routerLinkActive="active">
       <fa-icon [icon]="faNotes"></fa-icon>
       Anotações
@@ -13,7 +15,7 @@
       Meu Perfil
     </a>
 
-    <a routerLinkActive="active">
+    <a (click)="logout()" routerLinkActive="active">
       <fa-icon [icon]="faDoorOpen"></fa-icon>
       Sair
     </a>
@@ -40,6 +42,7 @@
 
   </div>
 </header>
+
 <router-outlet></router-outlet>
 <footer>
   <small>João Nascimento &copy; 2021.</small>
