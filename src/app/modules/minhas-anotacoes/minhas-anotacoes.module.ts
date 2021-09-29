@@ -9,6 +9,7 @@ import { CriarNotaComponent } from 'src/app/components/minhas-anotacoes/criar-no
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarNotaComponent } from 'src/app/components/minhas-anotacoes/editar-nota/editar-nota.component';
 import { ColorsComponent } from 'src/app/shared/components/colors/colors.component';
+import { NoteTableComponent } from 'src/app/shared/components/note-table/note-table.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ColorsComponent } from 'src/app/shared/components/colors/colors.compone
     MinhasAnotacoesComponent,
     CriarNotaComponent,
     EditarNotaComponent,
-    ColorsComponent
+    ColorsComponent,
+    NoteTableComponent
   ],
   imports: [
     CommonModule,

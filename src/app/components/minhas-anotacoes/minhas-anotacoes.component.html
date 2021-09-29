@@ -1,6 +1,9 @@
 <div id="container">
   <h2>Minhas anotações</h2>
-  <div id="note-table" *ngIf="notes.length > 0">
+  <app-note-table *ngIf="userNotes.length >= 0 && isLogged" [notes]="userNotes"></app-note-table>
+  <app-note-table *ngIf="!isLogged" [notes]="localNotes"></app-note-table>
+</div>
+  <!-- <div class="note-table" *ngIf="notes.length > 0">
     <div *ngFor="let note of notes" class="note {{note.color}}" (click)="editNote(note.id)">
       <div class="title">
         <h3>{{note.title}}</h3>
@@ -21,4 +24,4 @@
       <fa-icon [icon]="faPlus"></fa-icon>
     </a>
   </div>
-</div>
+</div> -->
