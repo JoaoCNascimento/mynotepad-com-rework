@@ -5,7 +5,7 @@ import { LoginRoutingModule } from './login-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { UserApiService } from 'src/app/services/user-api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @NgModule({
@@ -15,11 +15,11 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    ReactiveFormsModule
   ],
   providers: [
     UserApiService,
+    AuthService
   ]
 })
 export class LoginModule { }
