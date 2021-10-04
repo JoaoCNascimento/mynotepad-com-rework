@@ -20,19 +20,38 @@
   --orange-dark: #eb811f;
   --green: #7bdd75;
   --green-dark: #58b951;
-  --black: #2c2c2c;
-  --black-variation: #1f1f1f;
   --white: #FFF;
   --gray-light: #CCC;
   --pink: #db3c8c;
   --pink-dark: #c72b79;
+  --black: #111111;
+
+  --background-color: #2c2c2c;
+  --background-color-variation: #1f1f1f;
+  --std-text-color: #1c1c1c;
+  --title-color: black;
+  --heading-color: #FFF;
+  --p-color: rgba(255, 255, 255, 0.733);
+  --note-table-background: #2c2c2c;
 
   --primary-font: Quicksand, Arial, sans-serif;
   --secondary-font: Urbanist, Arial, sans-serif
 }
 
+.light {
+  --background-color-variation: #FFF;
+  --background-color: rgb(180, 180, 180);
+  --std-text-color: #1c1c1c;
+  --title-color: rgb(47, 196, 255);
+  --heading-color: #2c2c2c;
+  --p-color: rgba(26, 26, 26, 0.733);
+  --note-table-background: rgb(219, 219, 219);
+
+  --white: #ccc;
+}
+
 body {
-  background-color: #1c1c1c;
+  background-color: var(--background-color-variation);
 }
 
 header {
@@ -40,23 +59,23 @@ header {
   align-items: center;
   justify-content: space-between;
   font-family: var(--primary-font);
-  color: white;
+  color: var(--std-text-color);
   padding: 30px 25px;
-  background-color: #2c2c2c;
+  background-color: var(--background-color);
 }
 
 header a h1 {
-  color: white;
+  color: var(--heading-color);
   font-family: var(--primary-font);
 }
 
 header div a {
-  border: 2px solid white;
+  border: 2px solid var(--heading-color);
   border-radius: 50px;
   cursor: pointer;
   padding: 10px 15px;
   margin: 5px;
-  color: #FFF;
+  color: var(--heading-color);
   font-weight: bold;
 }
 
@@ -68,7 +87,7 @@ header div a:hover {
 
 header div .active {
   background-color: #FFF;
-  color: var(--black);
+  color: var(--std-text-color);
 }
 
 footer {
@@ -78,7 +97,7 @@ footer {
   margin-top: 35px;
   font-family: var(--primary-font);
   margin-bottom: 15px;
-  color: white;
+  color: var(--heading-color);
 }
 
 /* note colors */
