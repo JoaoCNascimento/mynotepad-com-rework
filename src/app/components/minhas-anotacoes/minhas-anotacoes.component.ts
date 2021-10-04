@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faQuestion } from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/models/Note';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotesApiService } from 'src/app/services/notes-api.service';
@@ -14,6 +14,7 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class MinhasAnotacoesComponent implements OnInit {
 
   faPlus = faPlus;
+  faQuestion = faQuestion;
 
   isLogged = false;
 

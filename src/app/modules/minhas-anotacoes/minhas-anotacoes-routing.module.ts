@@ -7,7 +7,11 @@ import { MinhasAnotacoesComponent } from 'src/app/components/minhas-anotacoes/mi
 const routes: Routes = [
   { path: '', component: MinhasAnotacoesComponent },
   { path: 'nova-anotacao', component: CriarNotaComponent },
-  { path: 'editar-anotacao/:id', component: EditarNotaComponent }
+  { path: 'editar-anotacao/:id', component: EditarNotaComponent },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

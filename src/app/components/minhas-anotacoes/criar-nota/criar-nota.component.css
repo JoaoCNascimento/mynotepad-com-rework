@@ -37,6 +37,7 @@ textarea {
   height: 45vh;
   font-family: var(--secondary-font);
   font-size: 1.4rem;
+  resize: none;
 }
 
 button {

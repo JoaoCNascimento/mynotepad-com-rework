@@ -1,61 +1,64 @@
-<app-loader *ngIf="loaderService.isLoading | async"></app-loader>
-<header>
-  <a routerLink="">
-    <h1>MyNotepad</h1>
-  </a>
-  <!--  -->
-  <div id="theme">
-    <div class="change-theme-button">
-      <input type="checkbox" class="checkbox" id="theme-switch" name="theme-switch" (change)="themeSwitch($event)">
-      <label for="theme-switch" class="label">
-        <fa-icon [icon]="faMoon"></fa-icon>
-        <fa-icon [icon]="faSun"></fa-icon>
-        <div class="blob"></div>
-      </label>
+<div [ngClass]="{'dark': darkMode, 'light': !darkMode}">
+  <app-loader *ngIf="loaderService.isLoading | async"></app-loader>
+  <header>
+    <a routerLink="">
+      <h1>MyNotepad</h1>
+    </a>
+    <!--  -->
+    <div id="theme">
+      <div class="change-theme-button">
+        <input type="checkbox" class="checkbox" id="theme-switch" name="theme-switch" (change)="themeSwitch($event)">
+        <label for="theme-switch" class="label">
+          <fa-icon [icon]="faMoon"></fa-icon>
+          <fa-icon [icon]="faSun"></fa-icon>
+          <div class="blob"></div>
+        </label>
+      </div>
     </div>
-  </div>
-  <!--  -->
-  <div *ngIf="isLogged" class="aside">
-    <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
-    <a routerLink="/minhas-anotacoes" routerLinkActive="active">
-      <fa-icon [icon]="faNotes"></fa-icon>
-      Anotações
-    </a>
+    <!--  -->
+    <div *ngIf="isLogged" class="aside">
+      <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
+      <a routerLink="/minhas-anotacoes" routerLinkActive="active">
+        <fa-icon [icon]="faNotes"></fa-icon>
+        Anotações
+      </a>
 
-    <a routerLinkActive="active">
-      <fa-icon [icon]="faUser"></fa-icon>
-      Meu Perfil
-    </a>
+      <a routerLinkActive="active">
+        <fa-icon [icon]="faUser"></fa-icon>
+        Meu Perfil
+      </a>
 
-    <a (click)="logout()" routerLinkActive="active">
-      <fa-icon [icon]="faDoorOpen"></fa-icon>
-      Sair
-    </a>
-  </div>
-  <fa-icon [icon]="faBars" id="hamburguer" (click)="showMenu()"></fa-icon>
-  <!---->
-  <div *ngIf="!isLogged" class="aside">
-    <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
+      <a (click)="logout()" routerLinkActive="active">
+        <fa-icon [icon]="faDoorOpen"></fa-icon>
+        Sair
+      </a>
+    </div>
+    <fa-icon [icon]="faBars" id="hamburguer" (click)="showMenu()"></fa-icon>
+    <!---->
+    <div *ngIf="!isLogged" class="aside">
+      <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
 
-    <a routerLink="/minhas-anotacoes" routerLinkActive="active">
-      <fa-icon [icon]="faNotes"></fa-icon>
-      Anotações
-    </a>
+      <a routerLink="/minhas-anotacoes" routerLinkActive="active">
+        <fa-icon [icon]="faNotes"></fa-icon>
+        Anotações
+      </a>
 
-    <a routerLink="/login" routerLinkActive="active">
-      <fa-icon [icon]="faSignIn"></fa-icon>
-      Login
-    </a>
+      <a routerLink="/login" routerLinkActive="active">
+        <fa-icon [icon]="faSignIn"></fa-icon>
+        Login
+      </a>
 
-    <a routerLink="/cadastrar" routerLinkActive="active">
-      <fa-icon [icon]="faUserPlus"></fa-icon>
-      Cadastrar-se
-    </a>
+      <a routerLink="/cadastrar" routerLinkActive="active">
+        <fa-icon [icon]="faUserPlus"></fa-icon>
+        Cadastrar-se
+      </a>
 
-  </div>
-</header>
+    </div>
+  </header>
 
-<router-outlet></router-outlet>
-<footer>
-  <small>João Nascimento &copy; 2021.</small>
-</footer>
+  <router-outlet></router-outlet>
+  <footer>
+    <small>João Nascimento &copy; 2021.</small>
+  </footer>
+
+</div>

@@ -4,7 +4,7 @@ form {
 
 .error {
   font-family: "Urbanist", Arial, sans-serif;
-  color: white;
+  color: var(--heading-color);
   margin-top: -15px;
 }
 
@@ -16,7 +16,7 @@ form {
 .form-group {
   display: flex;
   flex-direction: column;
-  color: white;
+  color: var(--heading-color);
   margin: 25px auto;
 }
 
@@ -31,10 +31,10 @@ form {
   background: none;
   border: none;
   outline: none;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid var(--heading-color);
   padding: 10px 5px;
   font-size: 1rem;
-  color: rgb(221, 221, 221);
+  color: var(--heading-color);
 }
 
 .checkbox label {
@@ -44,7 +44,7 @@ form {
 
 a {
   font-weight: bold;
-  color: white;
+  color: var(--p-color);
   cursor: pointer;
 }
 
@@ -56,12 +56,12 @@ button {
   font-family: Quicksand, Arial, sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
-  background-color: #1c1c1c;
-  border: 2px solid white;
+  background-color: var(--background-color-variation);
+  border: 2px solid var(--heading-color);
   border-radius: 25px;
   width: 220px;
   padding: 10px 15px;
-  color: white;
+  color: var(--heading-color);
   outline: none;
   cursor: pointer;
 }

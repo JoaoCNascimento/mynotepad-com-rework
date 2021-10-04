@@ -12,6 +12,8 @@ import { LocalStorageService } from './services/local-storage.service';
 })
 export class AppComponent implements OnInit {
 
+  darkMode = false;
+
   faUser = faUser;
   faNotes = faStickyNote;
   faDoorOpen = faDoorOpen;
@@ -37,16 +39,27 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.isLogged.subscribe(res => this.isLogged = res);
-    this.localStorageService.themeConfig();
     this.setCheckboxValue();
   }
 
   themeSwitch(e) {
-    this.localStorageService.themeConfig();
+    this.localStorageService.themeConfig(e.target.checked);
+    location.reload();
   }
 
   setCheckboxValue() {
     let checkbox = $("#theme-switch");
+    let body = $("#app")[0];
+    console.log(body);
+    if (localStorage.getItem("dark") === null) {
+      this.darkMode = false;
+      body.classList.add("light");
+      return checkbox.prop('checked', true);
+    }
+
+    this.darkMode = true;
+    body.classList.add("dark");
+    return checkbox.prop('checked', false)
   }
 
   logout() {

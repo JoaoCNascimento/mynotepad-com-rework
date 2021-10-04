@@ -36,16 +36,16 @@ export class EditarNotaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.note = this.ls.findOne(this.route.snapshot.params['id']);
+    this.configurateForm();
+    // this.notesApiService.get_note(this.route.snapshot.params['id']).subscribe(
+    //   (res:any) => {
+    //     this.note = res.note;
 
-    //this.note = this.ls.findOne(this.route.snapshot.params['id']);
-    this.notesApiService.get_note(this.route.snapshot.params['id']).subscribe(
-      (res:any) => {
-        this.note = res.note;
-        
-        this.configurateForm();
-      }
-    )
-    
+    //     this.configurateForm();
+    //   }
+    // )
+
   }
 
   configurateForm() {

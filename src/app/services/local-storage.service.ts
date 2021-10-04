@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Note } from '../models/Note';
 
 @Injectable({
@@ -6,7 +7,9 @@ import { Note } from '../models/Note';
 })
 export class LocalStorageService {
 
-  constructor() {
+  constructor(
+    private toastrService: ToastrService
+  ) {
 
   }
 
@@ -33,6 +36,7 @@ export class LocalStorageService {
     notes.push(note);
 
     localStorage.setItem('notes', JSON.stringify(notes));
+    this.successMessage("Anotação criada com sucesso!");
   }
 
   updateOne(note: Note) {
@@ -46,21 +50,33 @@ export class LocalStorageService {
 
     notes[newNoteIndex] = note;
     localStorage.setItem('notes', JSON.stringify(notes));
+    this.successMessage("Anotação atualizada com sucesso!");
   }
 
-  deleteOne(note) {
+  deleteOne(note: Note) {
     let notes: Note[] = JSON.parse(localStorage.getItem('notes')) || new Array();
 
     let newNote = notes.findIndex((element) => {
-      if (element._id === note.id) { return true; }
+      if (element._id === note._id) { return true; }
     });
 
     notes.splice(newNote, 1);
 
     localStorage.setItem('notes', JSON.stringify(notes));
+    this.successMessage("Anotação excluída com sucesso!");
   }
 
-  themeConfig() {
+  themeConfig(e) {
+    if (localStorage.getItem("dark") === null && !e) {
+      return localStorage.setItem("dark", "true");
+    }
 
+    localStorage.removeItem("dark");
+  }
+
+  successMessage(message: string) {
+    this.toastrService.success(message, "", {
+      progressBar: true
+    });
   }
 }

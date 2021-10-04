@@ -1,29 +1,28 @@
 <div id="container">
 
-    <a routerLink="/minhas-anotacoes">
-      <fa-icon [icon]="faArrowLeft"></fa-icon> Voltar
-    </a>
-  
-    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="{{color}}">
-  
-      <input type="text" class="title" formControlName="title" placeholder="Título da anotação">
-      <textarea name="" id="" cols="30" rows="10" class="description" formControlName="description"
-        placeholder="Descrição da anotação"></textarea>
-  
-      <app-colors (color)="setColor($event)"></app-colors>
-  
-      <div class="erro" *ngIf="this.form.get('title').touched && this.form.get('title').invalid">
-        <fa-icon [icon]="faExclamation"></fa-icon> O campo de título deve ter entre 1 e 60 caracteres.
-      </div>
-  
-      <div class="erro" *ngIf="this.form.get('description').touched && this.form.get('description').invalid">
-        <fa-icon [icon]="faExclamation"></fa-icon> O campo de descrição não pode ficar vazio.
-      </div>
-  
-      <div id="panel">
-        <button>Salvar</button>
-        <button (click)="excluirNota()">Excluir</button>
-      </div>
-    </form>
-  </div>
-  
+  <a routerLink="/minhas-anotacoes">
+    <fa-icon [icon]="faArrowLeft"></fa-icon> Voltar
+  </a>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="{{color}}">
+
+    <input type="text" class="title" formControlName="title" placeholder="Título da anotação">
+    <textarea name="" id="" cols="30" rows="10" class="description" formControlName="description"
+      placeholder="Descrição da anotação"></textarea>
+
+    <app-colors (color)="setColor($event)"></app-colors>
+
+    <div class="erro" *ngIf="this.form.get('title').touched && this.form.get('title').invalid">
+      <fa-icon [icon]="faExclamation"></fa-icon> O campo de título deve ter entre 1 e 60 caracteres.
+    </div>
+
+    <div class="erro" *ngIf="this.form.get('description').touched && this.form.get('description').invalid">
+      <fa-icon [icon]="faExclamation"></fa-icon> O campo de descrição não pode ficar vazio.
+    </div>
+
+    <div id="panel">
+      <button>Salvar</button>
+      <button (click)="excluirNota()">Excluir</button>
+    </div>
+  </form>
+</div>

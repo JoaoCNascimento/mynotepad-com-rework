@@ -3,25 +3,9 @@
   <app-note-table *ngIf="userNotes.length >= 0 && isLogged" [notes]="userNotes"></app-note-table>
   <app-note-table *ngIf="!isLogged" [notes]="localNotes"></app-note-table>
 </div>
-  <!-- <div class="note-table" *ngIf="notes.length > 0">
-    <div *ngFor="let note of notes" class="note {{note.color}}" (click)="editNote(note.id)">
-      <div class="title">
-        <h3>{{note.title}}</h3>
-      </div>
-      <div class="description">
-        <pre>{{ note.description}}</pre>
-      </div>
-    </div>
+
+<a routerLink="/manutencao">
+  <div class="help-button">
+    <fa-icon [icon]="faQuestion"></fa-icon>
   </div>
-  <div id="note-table" *ngIf="notes.length == 0">
-    <div id="empty-table-text">
-      <p>Você ainda não possui anotações</p>
-      <p>Clique no botão abaixo para criar uma nova anotação</p>
-    </div>
-  </div>
-  <div id="controls">
-    <a routerLink="nova-anotacao">
-      <fa-icon [icon]="faPlus"></fa-icon>
-    </a>
-  </div>
-</div> -->
+</a>
