@@ -14,12 +14,14 @@ import { AuthInterceptorProvider } from './interceptors/auth.interceptor';
 import { HttpClientModule } from '@angular/common/http';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoaderProviderInterceptor } from './interceptors/loader.interceptor';
+import { NoteFormComponent } from './shared/components/note-form/note-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoaderComponent
+    LoaderComponent,
+    NoteFormComponent
   ],
   imports: [
     BrowserModule,

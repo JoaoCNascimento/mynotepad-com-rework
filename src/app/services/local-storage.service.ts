@@ -19,7 +19,7 @@ export class LocalStorageService {
     let note: Note;
 
     notes.forEach(element => {
-      if (element.id === id) {
+      if (element._id === id) {
         note = element;
       };
     })
@@ -39,7 +39,7 @@ export class LocalStorageService {
     let notes: Note[] = JSON.parse(localStorage.getItem('notes')) || new Array();
 
     let newNoteIndex = notes.findIndex((element) => {
-      if (element.id === note.id) {
+      if (element._id === note._id) {
         return true;
       }
     });
@@ -52,11 +52,15 @@ export class LocalStorageService {
     let notes: Note[] = JSON.parse(localStorage.getItem('notes')) || new Array();
 
     let newNote = notes.findIndex((element) => {
-      if (element.id === note.id) { return true; }
+      if (element._id === note.id) { return true; }
     });
 
     notes.splice(newNote, 1);
 
     localStorage.setItem('notes', JSON.stringify(notes));
+  }
+
+  themeConfig() {
+
   }
 }

@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/models/Note';
 import { AuthService } from 'src/app/services/auth.service';
-import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NotesApiService } from 'src/app/services/notes-api.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-minhas-anotacoes',
@@ -22,27 +22,14 @@ export class MinhasAnotacoesComponent implements OnInit {
 
   constructor(
     private localStoredNotes: LocalStorageService,
-    private notesApiService: NotesApiService,
+    //private notesApiService: NotesApiService,
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService
+    //private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.findAllLocalStorage();
-    this.authService.isLogged.subscribe(res => {
-      this.isLogged = res;
-    });
-    this.notesApiService.get_notes().subscribe(
-      (res:any) => {
-
-        if(res.hasOwnProperty("notes")){
-          return this.userNotes = res.notes;
-        }
-
-        return this.userNotes = [];
-      }
-    );
   }
 
   findAllLocalStorage() {

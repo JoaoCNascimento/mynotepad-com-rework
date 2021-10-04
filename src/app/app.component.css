@@ -21,8 +21,87 @@
   cursor: pointer;
 }
 
-#hamburguer:hover {}
+#theme {
+  display: block;
+  position: relative;
+  margin-left: 15px;
+  margin-right: auto;
+}
 
+.label {
+  background-color: var(--black-variation);
+  height: 25px;
+  border-radius: 25px;
+  width: 65px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  padding: 0px 10px;
+}
+
+.label fa-icon:nth-child(2) {
+  color: var(--yellow);
+}
+
+.blob {
+  position: absolute;
+  width: 50%;
+  background-color: #fff;
+  height: 100%;
+  left: 50%;
+  border-radius: 25px;
+  transition: 0.10s;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkbox:checked + .label .blob {
+  left: 0;
+}
+
+/* theme
+#theme {
+  width: 70px;
+}
+
+#theme label {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--black-variation);
+  padding: 5px;
+  border-radius: 25px;
+  position: relative;
+}
+
+#theme label fa-icon:nth-child(3) {
+  color: var(--yellow);
+}
+
+#theme-switch {
+  position: absolute;
+  opacity: 0; 
+}
+
+.blob {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  border-radius: 25px;
+  background-color: #fff;
+  width: 50%;
+  height: 100%;
+}
+
+.checkbox:checked + label .blob {
+  left: 0%;
+}  */
 
 @media screen and (max-width: 980px) {
 

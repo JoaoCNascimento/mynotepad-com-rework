@@ -23,7 +23,6 @@ export class NoteTableComponent implements OnInit {
   }
 
   editNote(e) {
-    console.log(e);
     this.router.navigate(['editar-anotacao', e], { relativeTo: this.route });
   }
 }

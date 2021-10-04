@@ -1,5 +1,5 @@
 <div class="note-table" *ngIf="notes.length > 0">
-    <div *ngFor="let note of notes" class="note {{ note.color.toLowerCase() }}" (click)="editNote(note.id)">
+    <div *ngFor="let note of notes" class="note {{ note.color.toLowerCase() }}" (click)="editNote(note._id)">
       <div class="title">
         <h3>{{ note.title }}</h3>
       </div>

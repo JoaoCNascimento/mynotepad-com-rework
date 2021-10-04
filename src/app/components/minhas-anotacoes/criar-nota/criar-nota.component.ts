@@ -60,7 +60,7 @@ export class CriarNotaComponent implements OnInit {
     if (this.form.valid) {
 
       this.note = {
-        id: Date.now().toPrecision(),
+        _id: Date.now().toPrecision(),
         title: this.form.get('title').value,
         description: this.form.get('description').value,
         color: this.color,

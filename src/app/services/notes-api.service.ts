@@ -23,5 +23,9 @@ export class NotesApiService {
     return this.httpClient.get<Note[]>(this.baseUrl);
   }
 
+  get_note(id: string): Observable<Note>{
+    return this.httpClient.get<Note>(this.baseUrl + '/' + id);
+  }
+
 
 }

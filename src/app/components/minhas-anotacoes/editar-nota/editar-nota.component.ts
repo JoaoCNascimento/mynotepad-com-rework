@@ -5,6 +5,7 @@ import { faArrowLeft, faExclamation, faPlus } from '@fortawesome/free-solid-svg-
 import { Observable } from 'rxjs';
 import { Note } from 'src/app/models/Note';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { NotesApiService } from 'src/app/services/notes-api.service';
 
 @Component({
   selector: 'app-editar-nota',
@@ -28,14 +29,23 @@ export class EditarNotaComponent implements OnInit {
     private fb: FormBuilder,
     private ls: LocalStorageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private notesApiService: NotesApiService
   ) {
 
   }
 
   ngOnInit(): void {
-    this.note = this.ls.findOne(this.route.snapshot.params['id']);
-    this.configurateForm();
+
+    //this.note = this.ls.findOne(this.route.snapshot.params['id']);
+    this.notesApiService.get_note(this.route.snapshot.params['id']).subscribe(
+      (res:any) => {
+        this.note = res.note;
+        
+        this.configurateForm();
+      }
+    )
+    
   }
 
   configurateForm() {

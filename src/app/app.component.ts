@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars, faDoorOpen, faSignInAlt, faStickyNote, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faDoorOpen, faMoon, faSignInAlt, faStickyNote, faSun, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -19,19 +20,33 @@ export class AppComponent implements OnInit {
   faBars = faBars;
   faTimes = faTimes;
 
+  faMoon = faMoon;
+  faSun = faSun;
+
   title = 'Mynotepad';
 
   isLogged: boolean = false;
 
   constructor(
     private authService: AuthService,
-    public loaderService: LoaderService
+    public loaderService: LoaderService,
+    public localStorageService: LocalStorageService
   ) {
 
   }
 
   ngOnInit() {
     this.authService.isLogged.subscribe(res => this.isLogged = res);
+    this.localStorageService.themeConfig();
+    this.setCheckboxValue();
+  }
+
+  themeSwitch(e) {
+    this.localStorageService.themeConfig();
+  }
+
+  setCheckboxValue() {
+    let checkbox = $("#theme-switch");
   }
 
   logout() {

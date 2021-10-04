@@ -3,6 +3,18 @@
   <a routerLink="">
     <h1>MyNotepad</h1>
   </a>
+  <!--  -->
+  <div id="theme">
+    <div class="change-theme-button">
+      <input type="checkbox" class="checkbox" id="theme-switch" name="theme-switch" (change)="themeSwitch($event)">
+      <label for="theme-switch" class="label">
+        <fa-icon [icon]="faMoon"></fa-icon>
+        <fa-icon [icon]="faSun"></fa-icon>
+        <div class="blob"></div>
+      </label>
+    </div>
+  </div>
+  <!--  -->
   <div *ngIf="isLogged" class="aside">
     <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
     <a routerLink="/minhas-anotacoes" routerLinkActive="active">

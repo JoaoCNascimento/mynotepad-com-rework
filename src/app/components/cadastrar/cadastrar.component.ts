@@ -81,7 +81,7 @@ export class CadastrarComponent implements OnInit {
 
     if (this.form.valid) {
       let user: User = {
-        id: undefined,
+        _id: undefined,
         name: this.form.get('name').value,
         birthDate: this.form.get('birthDate').value,
         email: this.form.get('email').value,
