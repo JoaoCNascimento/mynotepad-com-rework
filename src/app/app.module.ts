@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CookieService } from 'ngx-cookie-service';
 
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,7 +33,6 @@ import { ManutencaoComponent } from './components/manutencao/manutencao.componen
     ToastrModule.forRoot()
   ],
   providers: [
-    CookieService,
     [
       AuthInterceptorProvider,
       LoaderProviderInterceptor
