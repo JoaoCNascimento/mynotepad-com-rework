@@ -5,11 +5,11 @@ const path = require('path');
 const app = express();
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/mynotepad-com-rework'));
+app.use(express.static('./dist/mynotepad-frontend'));
 
 app.get('/*', (req, res) =>
   res.sendFile('index.html', {
-    root: 'dist/mynotepad-com-rework/'
+    root: 'dist/mynotepad-frontend/'
   }),
 );
 
