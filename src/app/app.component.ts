@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faBars, faDoorOpen, faMoon, faSignInAlt, faStickyNote, faSun, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faDoorOpen, faMoon, faQuestionCircle, faSignInAlt, faStickyNote, faSun, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   faUserPlus = faUserPlus;
   faBars = faBars;
   faTimes = faTimes;
+  faQuestion = faQuestionCircle;
 
   faMoon = faMoon;
   faSun = faSun;
