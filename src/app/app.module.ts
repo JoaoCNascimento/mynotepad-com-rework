@@ -15,6 +15,7 @@ import { LoaderComponent } from './shared/components/loader/loader.component';
 import { LoaderProviderInterceptor } from './interceptors/loader.interceptor';
 import { NoteFormComponent } from './shared/components/note-form/note-form.component';
 import { ManutencaoComponent } from './components/manutencao/manutencao.component';
+import { AjudaComponent } from './components/ajuda/ajuda.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ManutencaoComponent } from './components/manutencao/manutencao.componen
     HomeComponent,
     LoaderComponent,
     NoteFormComponent,
-    ManutencaoComponent
+    ManutencaoComponent,
+    AjudaComponent
   ],
   imports: [
     BrowserModule,

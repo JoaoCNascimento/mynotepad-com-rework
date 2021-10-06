@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AjudaComponent } from './components/ajuda/ajuda.component';
 import { HomeComponent } from './components/home/home.component';
 import { ManutencaoComponent } from './components/manutencao/manutencao.component';
 import { AuthGuard } from './guard/auth.guard';
@@ -26,6 +27,9 @@ const routes: Routes = [
   },
   {
     path: 'manutencao', component: ManutencaoComponent
+  },
+  {
+    path: 'ajuda', component: AjudaComponent
   },
   {
     path: '**',
