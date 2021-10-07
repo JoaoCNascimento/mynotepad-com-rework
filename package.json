@@ -29,7 +29,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "express": "^4.17.1",
     "jquery": "^3.6.0",
-    "jspdf": "^2.4.0",
     "ngx-toastr": "^12.1.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.4",
