@@ -8,10 +8,10 @@
 }
 
 a {
-  color: white;
+  color: var(--heading-color);
   font-size: 1.2rem;
   font-family: var(--primary-font);
-  border: 2px solid white;
+  border: 2px solid var(--heading-color);
   border-radius: 25px;
   padding: 5px 15px;
 }
