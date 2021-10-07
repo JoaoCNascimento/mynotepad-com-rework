@@ -6,6 +6,22 @@
 
   <form (ngSubmit)="onSubmit()" [formGroup]="form" class="{{color.toLowerCase()}}">
 
+    <div class="timestamps">
+      <h3>Informações da anotação</h3>
+      <hr>
+      <div class="timestamps-container">
+        <div>
+          <small>Criada em:</small>
+          <p>{{note.created_at | date:'dd/MM/yy'}} às {{note.created_at | date:'H:mm'}}</p>
+        </div>
+        <!--  -->
+        <div>
+          <small>Atualizada pela última vez em:</small>
+          <p>{{note.updated_at | date:'dd/MM/yy'}} às {{ note.updated_at | date:'H:mm' }}</p>
+        </div>
+      </div>
+    </div>
+
     <input type="text" class="title" formControlName="title" placeholder="Título da anotação">
     <textarea name="" id="" cols="30" rows="10" class="description" formControlName="content"
       placeholder="Descrição da anotação"></textarea>

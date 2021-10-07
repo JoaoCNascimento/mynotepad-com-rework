@@ -84,6 +84,48 @@ h2 {
   border-radius: 5px;
 }
 
+fieldset {
+  border-color: var(--heading-color);
+}
+
+.timestamps {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-radius: 5px;
+  color: var(--heading-color);
+}
+
+.timestamps hr {
+  border: 1px solid var(--heading-color);
+  margin: 10px 0px;
+}
+
+.timestamps-container {
+  display: flex;
+}
+
+.timestamps h3 {
+  text-align: center;
+}
+
+.timestamps-container div {
+  display: flex;
+  flex-direction: column;
+  color: var(--heading-color);
+  align-items: center;
+  text-align: center;
+  width: 50%;
+}
+
+.timestamps-container small {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 @media screen and (max-width: 600px) {
 
   form {
@@ -98,6 +140,20 @@ h2 {
     font-size: 4vw;
   }
 
+}
+
+@media screen and (max-width: 500px) {
+  .timestamps-container {
+    flex-direction: column;
+  }
+
+  .timestamps-container div {
+    width: 100%;
+  }
+
+  .timestamps-container div:nth-child(1) {
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (min-height: 1081px) {

@@ -3,6 +3,7 @@ export interface Note {
     title: string;
     content: string;
     description?: string;
+    tags?: string[];
     color: string;
     created_at: Date;
     updated_at: Date;
