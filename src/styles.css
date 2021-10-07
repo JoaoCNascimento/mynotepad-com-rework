@@ -181,3 +181,10 @@ footer {
   background: var(--orange);
   color: white
 }
+
+@media screen and (max-width: 980px) {
+  header div .active {
+    background-color: var(--heading-color);
+    color: var(--background-color-variation);
+  }
+}
