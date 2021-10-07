@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faPlus, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faQuestion, faFileDownload } from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/models/Note';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotesApiService } from 'src/app/services/notes-api.service';
@@ -15,11 +15,14 @@ export class MinhasAnotacoesComponent implements OnInit {
 
   faPlus = faPlus;
   faQuestion = faQuestion;
+  faFileDownload = faFileDownload;
 
   isLogged = false;
 
   localNotes: Note[] = [];
   userNotes: Note[] = [];
+
+  @ViewChild('content', { static: false }) el!: ElementRef;
 
   constructor(
     private localStoredNotes: LocalStorageService,
@@ -41,4 +44,5 @@ export class MinhasAnotacoesComponent implements OnInit {
     console.log(e);
     this.router.navigate(['editar-anotacao', e], { relativeTo: this.route });
   }
+
 }

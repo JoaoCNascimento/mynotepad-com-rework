@@ -57,7 +57,7 @@ export class EditarNotaComponent implements OnInit {
           Validators.maxLength(60)
         ]
       }],
-      description: [this.note.description, {
+      content: [this.note.content || this.note.description, {
         validators: [
           Validators.required,
         ]
@@ -71,7 +71,8 @@ export class EditarNotaComponent implements OnInit {
     if (this.form.valid) {
 
       this.note.title = this.form.get('title').value;
-      this.note.description = this.form.get('description').value;
+      this.note.content = this.form.get('content').value;
+      this.note.description = undefined;
       this.note.color = this.color;
       this.note.updated_at = new Date();
 

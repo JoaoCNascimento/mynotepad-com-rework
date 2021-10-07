@@ -7,7 +7,7 @@
   <form (ngSubmit)="onSubmit()" [formGroup]="form" class="{{color}}">
 
     <input type="text" class="title" formControlName="title" placeholder="Título da anotação">
-    <textarea name="" id="" cols="30" rows="10" class="description" formControlName="description"
+    <textarea name="" id="" cols="30" rows="10" class="description" formControlName="content"
       placeholder="Descrição da anotação"></textarea>
 
     <app-colors (color)="setColor($event)"></app-colors>
@@ -16,7 +16,7 @@
       <fa-icon [icon]="faExclamation"></fa-icon> O campo de título deve ter entre 1 e 60 caracteres.
     </div>
 
-    <div class="erro" *ngIf="this.form.get('description').touched && this.form.get('description').invalid">
+    <div class="erro" *ngIf="this.form.get('content').touched && this.form.get('content').invalid">
       <fa-icon [icon]="faExclamation"></fa-icon> O campo de descrição não pode ficar vazio.
     </div>
 

@@ -1,7 +1,7 @@
 <div id="container">
   <h2>Minhas anotações</h2>
-  <app-note-table *ngIf="userNotes.length >= 0 && isLogged" [notes]="userNotes"></app-note-table>
-  <app-note-table *ngIf="!isLogged" [notes]="localNotes"></app-note-table>
+  <app-note-table *ngIf="userNotes.length >= 0 && isLogged" [notes]="userNotes" #content></app-note-table>
+  <app-note-table *ngIf="!isLogged" [notes]="localNotes" #content></app-note-table>
 </div>
 
 <a routerLink="/ajuda">

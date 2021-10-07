@@ -46,7 +46,7 @@ export class CriarNotaComponent implements OnInit {
           Validators.maxLength(60)
         ]
       }],
-      description: [null, {
+      content: [null, {
         validators: [
           Validators.required,
         ]
@@ -62,7 +62,8 @@ export class CriarNotaComponent implements OnInit {
       this.note = {
         _id: Date.now().toPrecision(),
         title: this.form.get('title').value,
-        description: this.form.get('description').value,
+        content: this.form.get('content').value,
+        description: undefined,
         color: this.color,
         created_at: new Date(),
         updated_at: new Date()
