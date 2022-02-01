@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { UserApiService } from 'src/app/services/user-api.service';
-import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/auth.service';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  mostrarSenha = false;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
   form: FormGroup;
   error = {
     status: false,
@@ -29,7 +32,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.configurateForm();
   }
-
 
   configurateForm() {
     return this.form = this.fb.group({
@@ -60,9 +62,9 @@ export class LoginComponent implements OnInit {
 
         let response: any = res;
 
-        if (response.hasOwnProperty('error_message')) {
+        if (response.hasOwnProperty('error')) {
           this.error.status = true;
-          this.error.message = response.error_message;
+          this.error.message = response.error.error_message;
 
           return;
         }
@@ -74,5 +76,9 @@ export class LoginComponent implements OnInit {
   resetError() {
     this.error.message = '';
     this.error.status = false;
+  }
+
+  mostrarSenhaSwitch() {
+    this.mostrarSenha = !this.mostrarSenha;
   }
 }
