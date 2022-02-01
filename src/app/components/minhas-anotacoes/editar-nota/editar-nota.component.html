@@ -1,44 +1,73 @@
 <div id="container">
-
   <a routerLink="/minhas-anotacoes">
     <fa-icon [icon]="faArrowLeft"></fa-icon> Voltar
   </a>
 
-  <form (ngSubmit)="onSubmit()" [formGroup]="form" class="{{color.toLowerCase()}}">
-
-    <div class="timestamps">
-      <h3>Informações da anotação</h3>
-      <hr>
-      <div class="timestamps-container">
-        <div>
-          <small>Criada em:</small>
-          <p>{{note.created_at | date:'dd/MM/yy'}} às {{note.created_at | date:'H:mm'}}</p>
-        </div>
-        <!--  -->
-        <div>
-          <small>Atualizada pela última vez em:</small>
-          <p>{{note.updated_at | date:'dd/MM/yy'}} às {{ note.updated_at | date:'H:mm' }}</p>
-        </div>
+  <div class="timestamps">
+    <h3>Informações da anotação</h3>
+    <hr />
+    <div class="timestamps-container">
+      <div>
+        <small>Criada em:</small>
+        <p>
+          {{ (note.createdAt ? note.createdAt : note.created_at) | date: "dd/MM/yy" }} às
+          {{ (note.created_at ? note.created_at : note.createdAt) | date: "H:mm" }}
+        </p>
+      </div>
+      <!--  -->
+      <div>
+        <small>Atualizada pela última vez em:</small>
+        <p>
+          {{ (note.updated_at ? note.updated_at : note.updatedAt) | date: "dd/MM/yy" }} às
+          {{ (note.updated_at ? note.updated_at : note.updatedAt) | date: "H:mm" }}
+        </p>
       </div>
     </div>
-
-    <input type="text" class="title" formControlName="title" placeholder="Título da anotação">
-    <textarea name="" id="" cols="30" rows="10" class="description" formControlName="content"
-      placeholder="Descrição da anotação"></textarea>
+  </div>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="form"
+    class="{{ color.toLowerCase() }}"
+  >
+    <input
+      type="text"
+      class="title"
+      formControlName="title"
+      placeholder="Título da anotação"
+    />
+    <textarea
+      name=""
+      id=""
+      cols="30"
+      rows="10"
+      class="description"
+      formControlName="content"
+      placeholder="Descrição da anotação"
+    ></textarea>
 
     <app-colors (color)="setColor($event)"></app-colors>
 
-    <div class="erro" *ngIf="this.form.get('title').touched && this.form.get('title').invalid">
-      <fa-icon [icon]="faExclamation"></fa-icon> O campo de título deve ter entre 1 e 60 caracteres.
+    <div
+      class="erro"
+      *ngIf="this.form.get('title').touched && this.form.get('title').invalid"
+    >
+      <fa-icon [icon]="faExclamation"></fa-icon> O campo de título deve ter
+      entre 1 e 60 caracteres.
     </div>
 
-    <div class="erro" *ngIf="this.form.get('content').touched && this.form.get('content').invalid">
-      <fa-icon [icon]="faExclamation"></fa-icon> O campo de descrição não pode ficar vazio.
+    <div
+      class="erro"
+      *ngIf="
+        this.form.get('content').touched && this.form.get('content').invalid
+      "
+    >
+      <fa-icon [icon]="faExclamation"></fa-icon> O campo de descrição não pode
+      ficar vazio.
     </div>
 
     <div id="panel">
-      <button>Salvar</button>
-      <button (click)="excluirNota()">Excluir</button>
+      <button type="submit">Salvar</button>
+      <button type="button" (click)="excluirNota()">Excluir</button>
     </div>
   </form>
 </div>

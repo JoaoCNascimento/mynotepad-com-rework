@@ -4,7 +4,7 @@
 }
 
 #container {
-  padding: 25px
+  padding: 25px;
 }
 
 a {
@@ -24,7 +24,7 @@ form {
   background-color: transparent;
 }
 
-input[type=text] {
+input[type="text"] {
   font-size: 1.6rem;
   height: 10vh;
   padding: 25px;
@@ -71,7 +71,7 @@ textarea {
 h2 {
   margin-top: 15px;
   font-family: var(--primary-font);
-  color: #FFF;
+  color: #fff;
 }
 
 .erro {
@@ -91,8 +91,8 @@ fieldset {
 .timestamps {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin-bottom: 15px;
+  width: 500px;
+  margin: 30px auto 25px;
   padding: 20px;
   background-color: var(--background-color);
   border-radius: 5px;
@@ -127,12 +127,11 @@ fieldset {
 }
 
 @media screen and (max-width: 600px) {
-
   form {
     width: 95%;
   }
 
-  input[type=text] {
+  input[type="text"] {
     font-size: 5vw;
   }
 
@@ -140,6 +139,9 @@ fieldset {
     font-size: 4vw;
   }
 
+  .timestamps {
+    width: 95%;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -157,11 +159,11 @@ fieldset {
 }
 
 @media screen and (min-height: 1081px) {
-  input[type=text] {
-    height: 100px
+  input[type="text"] {
+    height: 100px;
   }
 
   textarea {
-    height: 500px
+    height: 500px;
   }
 }

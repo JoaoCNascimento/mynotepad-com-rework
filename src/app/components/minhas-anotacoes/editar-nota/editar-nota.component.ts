@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faArrowLeft, faExclamation, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { Note } from 'src/app/models/Note';
+import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NotesApiService } from 'src/app/services/notes-api.service';
 
@@ -30,26 +31,32 @@ export class EditarNotaComponent implements OnInit {
     private ls: LocalStorageService,
     private route: ActivatedRoute,
     private router: Router,
-    private notesApiService: NotesApiService
-  ) {
-
-  }
+    private notesApiService: NotesApiService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.note = this.ls.findOne(this.route.snapshot.params['id']);
-    this.configurateForm();
-    // this.notesApiService.get_note(this.route.snapshot.params['id']).subscribe(
-    //   (res:any) => {
-    //     this.note = res.note;
+    this.authService.isLogged.subscribe(val => {
 
-    //     this.configurateForm();
-    //   }
-    // )
+      this.note = this.ls.findOne(this.route.snapshot.params['id']);
 
+      if(this.note) {
+        this.configurateForm();
+        return;   
+      }
+  
+      if(!this.note && val) {
+        this.notesApiService.get_note(this.route.snapshot.params['id']).subscribe(
+          (res:any) => {
+            this.note = res.note;
+            this.configurateForm();
+          }
+        );
+      }
+    })
   }
 
   configurateForm() {
-
     this.form = this.fb.group({
       title: [this.note.title, {
         validators: [
@@ -68,25 +75,45 @@ export class EditarNotaComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.form.valid) {
+    this.authService.isLogged.subscribe(val => {
 
-      this.note.title = this.form.get('title').value;
-      this.note.content = this.form.get('content').value;
-      this.note.description = undefined;
-      this.note.color = this.color;
-      this.note.updated_at = new Date();
+      if (this.form.valid) {
+        this.note.title = this.form.get('title').value;
+        this.note.content = this.form.get('content').value;
+        this.note.description = undefined;
+        this.note.color = this.color;
+        this.note.updated_at = new Date();
+        this.note.updatedAt = new Date();
+      }
+      else
+       return this.form.markAllAsTouched();
 
+      console.log(this.note)
+      
+      if (!this.ls.findOne(this.note._id) && val) {
+        this.notesApiService.put_note(this.note).subscribe(res => {
+          this.router.navigate(['/minhas-anotacoes']);
+        });
+        return;
+      }
+  
       this.ls.updateOne(this.note);
-
       this.router.navigate(['/minhas-anotacoes']);
-    }
-    else
-      this.form.markAllAsTouched();
+    })
   }
 
   excluirNota() {
-    this.ls.deleteOne(this.note);
-    this.router.navigate(['/minhas-anotacoes']);
+    this.authService.isLogged.subscribe(val => {
+      if(!this.ls.findOne(this.note._id) && val) {
+        this.notesApiService.delete_note(this.note._id).subscribe(res => {
+          this.router.navigate(['/minhas-anotacoes']);
+        });
+        return;
+      }
+      else 
+        this.ls.deleteOne(this.note);
+      this.router.navigate(['/minhas-anotacoes']);
+    });
   }
 
   setColor(e) {
