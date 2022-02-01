@@ -23,3 +23,24 @@
     <button>Salvar</button>
   </form>
 </div>
+
+<div class="modal-container" (click)="modalService.hideModal()" #template>
+  <div class="modal-body">
+    <fa-icon (click)="modalService.hideModal()" class="modal-close-button" [icon]="faTimes"></fa-icon>
+    <div class="content">
+      <div class="dialog">
+        <h4 class="modal-title pull-left">Onde deseja salvar sua nova anotação?</h4>
+      </div>
+      <div class="options-container">
+        <div (click)="createNoteOnCloud()" class="option">
+          <fa-icon [icon]="faCloud"></fa-icon>
+          <p>Nuvem</p>
+        </div>
+        <div (click)="createLocalNote()" class="option">
+          <fa-icon [icon]="faSdCard"></fa-icon>
+          <p>Local</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

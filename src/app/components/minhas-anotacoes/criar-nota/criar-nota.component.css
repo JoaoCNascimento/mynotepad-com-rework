@@ -44,12 +44,12 @@ button {
   font-family: Quicksand, Arial, sans-serif;
   font-weight: bold;
   font-size: 1.2rem;
-  background-color: #1c1c1c;
-  border: 2px solid white;
+  background-color: var(--background-color-variation);
+  border: 2px solid var(--heading-color);
   border-radius: 25px;
   width: 100%;
   padding: 10px 15px;
-  color: white;
+  color: var(--heading-color);
   outline: none;
   cursor: pointer;
 }
