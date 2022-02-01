@@ -9,6 +9,9 @@ const routes: Routes = [
   { path: 'nova-anotacao', component: CriarNotaComponent },
   { path: 'editar-anotacao/:id', component: EditarNotaComponent },
   {
+    path: 'meu-perfil', redirectTo: '/manutencao'
+  },
+  {
     path: '**',
     redirectTo: ''
   }

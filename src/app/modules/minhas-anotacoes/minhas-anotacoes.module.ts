@@ -10,6 +10,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditarNotaComponent } from 'src/app/components/minhas-anotacoes/editar-nota/editar-nota.component';
 import { ColorsComponent } from 'src/app/shared/components/colors/colors.component';
 import { NoteTableComponent } from 'src/app/shared/components/note-table/note-table.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { NotesApiService } from 'src/app/services/notes-api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { NoteTableComponent } from 'src/app/shared/components/note-table/note-ta
     ReactiveFormsModule
   ],
   providers: [
-    LocalStorageService
+    LocalStorageService,
+    NotesApiService,
+    AuthService
   ]
 })
 export class MinhasAnotacoesModule { }

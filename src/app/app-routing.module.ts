@@ -16,10 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    // loadChildren: () => import("./modules/login/login.module")
-    //   .then(m => m.LoginModule),
-    // canLoad: [AuthGuard],
-    redirectTo: "manutencao"
+    loadChildren: () => import("./modules/login/login.module")
+      .then(m => m.LoginModule),
+    canLoad: [AuthGuard],
   },
   {
     path: 'minhas-anotacoes', loadChildren: () => import("./modules/minhas-anotacoes/minhas-anotacoes.module")

@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from 'src/app/components/login/login.component';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AuthService } from 'src/app/services/auth.service';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [
     UserApiService,
