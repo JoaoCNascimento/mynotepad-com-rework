@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Note } from 'src/app/models/Note';
@@ -8,7 +8,7 @@ import { Note } from 'src/app/models/Note';
   templateUrl: './note-table.component.html',
   styleUrls: ['./note-table.component.css']
 })
-export class NoteTableComponent implements OnInit {
+export class NoteTableComponent implements OnInit, OnChanges {
 
   faPlus = faPlus;
 
@@ -20,6 +20,16 @@ export class NoteTableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (<Note[]>changes.notes.currentValue.notes) {
+      this.notes = <Note[]>changes.notes.currentValue.notes
+    }
+    else {
+      this.notes = <Note[]>changes.notes.currentValue;
+    }
   }
 
   editNote(e) {

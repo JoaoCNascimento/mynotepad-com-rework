@@ -1,7 +1,19 @@
 <div id="container">
-  <h2>Minhas anotações</h2>
-  <app-note-table *ngIf="userNotes.length >= 0 && isLogged" [notes]="userNotes" #content></app-note-table>
-  <app-note-table *ngIf="!isLogged" [notes]="localNotes" #content></app-note-table>
+  <h2>Minhas anotações</h2> 
+  <div *ngIf="isLogged" class="change-tables-control">
+    <div (click)="alternarTabela(false)" class="blue {{ local ? '' : 'active'}}">
+      <fa-icon [icon]="faCloud"></fa-icon>
+      <p>Anotações na nuvem</p>
+    </div>
+    <!--  -->
+    <div (click)="alternarTabela(true)" class="yellow {{ local ? 'active' : '' }}">
+      <fa-icon [icon]="faSdCard"></fa-icon>
+      <p>Anotações locais</p>
+    </div>
+  </div>
+  <app-note-table *ngIf="local" [notes]="localNotes"></app-note-table>
+  <br>
+  <app-note-table *ngIf="!local" [notes]="userNotes"></app-note-table>
 </div>
 
 <a routerLink="/ajuda">

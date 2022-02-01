@@ -3,8 +3,62 @@
   height: 70vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+app-note-table {
+  position: relative;
+  margin-bottom: 70px;
+}
+
+.change-tables-control {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: -10px;
+}
+
+.change-tables-control div {
+  display: flex;
+  width: 48%;
+  align-items: center;
   justify-content: center;
-  width: 100vw;
+  border-radius: 5px 5px 0px 0px;
+  cursor: pointer;
+  transition: 0.15s;
+  padding-bottom: 10px;
+}
+
+.blue {
+  background-color: rgb(13, 13, 158);
+}
+
+.yellow {
+  background-color: rgb(180, 180, 3);
+  color: rgb(139, 139, 139);
+}
+
+.blue.active {
+  background-color: var(--blue-dark);
+  color: #fff;
+}
+
+.yellow.active {
+  background-color: var(--yellow);
+}
+
+.change-tables-control fa-icon,
+.change-tables-control p {
+  margin: 5px;
+}
+
+.change-tables-control div:not(.active) {
+  color: rgb(128, 128, 128);
+}
+
+.active {
+  padding: 10px;
+  color: var(--black);
 }
 
 h2 {
@@ -32,4 +86,14 @@ h2 {
 .help-button fa-icon {
   color: white;
   font-size: 1.6rem;
+}
+
+@media screen and (max-width: 499px) {
+  .change-tables-control p {
+    display: none;
+  }
+
+  .change-tables-control fa-icon {
+    font-size: 1.6rem;
+  }
 }
