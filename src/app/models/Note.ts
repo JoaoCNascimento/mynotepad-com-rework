@@ -5,6 +5,8 @@ export interface Note {
     description?: string;
     tags?: string[];
     color: string;
+    createdAt?: Date; // é terrível
+    updatedAt?: Date; // eu sei
     created_at: Date;
     updated_at: Date;
 }
