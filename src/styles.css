@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
   margin: 0;
@@ -7,6 +7,7 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: var(--secondary-font);
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -20,8 +21,8 @@
   --orange-dark: #eb811f;
   --green: #7bdd75;
   --green-dark: #58b951;
-  --white: #FFF;
-  --gray-light: #CCC;
+  --white: #fff;
+  --gray-light: #ccc;
   --pink: #db3c8c;
   --pink-dark: #c72b79;
   --black: #111111;
@@ -30,23 +31,26 @@
   --background-color-variation: #1f1f1f;
   --std-text-color: #1c1c1c;
   --title-color: black;
-  --heading-color: #FFF;
+  --heading-color: #fff;
   --p-color: rgba(255, 255, 255, 0.733);
   --note-table-background: #2c2c2c;
+  --btn-new: rgb(100, 100, 100);
 
   --primary-font: Quicksand, Arial, sans-serif;
-  --secondary-font: Urbanist, Arial, sans-serif
+  --secondary-font: Urbanist, Arial, sans-serif;
 }
 
 .light {
-  --background-color-variation: #FFF;
-  --background-color: rgb(180, 180, 180);
+  --background-color-variation: #fff;
+  /* --background-color-variation: rgb(251, 122, 122); */
+  /* --background-color: rgb(180, 180, 180); */
+  --background-color: rgb(251, 122, 122);
+  --btn-new: var(--background-color);
   --std-text-color: #1c1c1c;
   --title-color: rgb(47, 196, 255);
   --heading-color: #2c2c2c;
   --p-color: rgba(26, 26, 26, 0.733);
   --note-table-background: rgb(219, 219, 219);
-
   --white: #ccc;
 }
 
@@ -86,7 +90,7 @@ header div a:hover {
 }
 
 header div .active {
-  background-color: #FFF;
+  background-color: #fff;
   color: var(--std-text-color);
 }
 
@@ -174,12 +178,12 @@ footer {
 
 .orange .title {
   background: var(--orange-dark);
-  color: white
+  color: white;
 }
 
 .orange .description {
   background: var(--orange);
-  color: white
+  color: white;
 }
 
 @media screen and (max-width: 980px) {
@@ -187,4 +191,88 @@ footer {
     background-color: var(--heading-color);
     color: var(--background-color-variation);
   }
+}
+
+.modal-container {
+  display: none;
+  transition: 0.5s;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 0%;
+  left: 0;
+  right: 0;
+  background-color: rgba(51, 51, 51, 0.42);
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color-variation);
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  height: 300px;
+  border-radius: 5px;
+  overflow-y: auto;
+  margin-top: -105%;
+  transition: 0.5s;
+}
+
+.modal-body h4 {
+  text-align: center;
+  padding: 20px;
+  color: var(--heading-color);
+  font-weight: 300;
+  font-size: 1.3rem;
+}
+
+.modal-body .content {
+  margin: auto;
+}
+
+.modal-body .options-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.modal-body .options-container .option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 15px;
+  border-radius: 10px;
+  background-color: var(--blue);
+  cursor: pointer;
+  max-width: 200px;
+  width: 30%;
+  min-width: 70px;
+  color: #fff;
+}
+
+.modal-body .options-container fa-icon {
+  font-size: 2rem;
+}
+
+.modal-body .options-container .option:nth-child(2) {
+  background-color: var(--yellow);
+  color: #1d1d1d;
+}
+
+.modal-close-button {
+  font-size: 2rem;
+  font-weight: 1000;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: 0.25s;
+  color: var(--heading-color)
+}
+
+.modal-close-button:hover {
+  color: #3c3c3c;
 }
