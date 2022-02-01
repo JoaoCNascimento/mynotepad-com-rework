@@ -18,17 +18,17 @@
     <!--  -->
     <div *ngIf="isLogged" class="aside">
       <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
-      <a routerLink="/minhas-anotacoes" routerLinkActive="active">
+      <a class="btn-aside" routerLink="/minhas-anotacoes" routerLinkActive="active">
         <fa-icon [icon]="faNotes"></fa-icon>
         Anotações
       </a>
 
-      <a routerLinkActive="active">
+      <a class="btn-aside" routerLink="/minhas-anotacoes/meu-perfil" routerLinkActive="active">
         <fa-icon [icon]="faUser"></fa-icon>
         Meu Perfil
       </a>
 
-      <a (click)="logout()" routerLinkActive="active">
+      <a class="btn-aside" (click)="logout()" routerLinkActive="active">
         <fa-icon [icon]="faDoorOpen"></fa-icon>
         Sair
       </a>
@@ -38,22 +38,22 @@
     <div *ngIf="!isLogged" class="aside">
       <fa-icon [icon]="faTimes" id="close-btn" (click)="hideMenu()"></fa-icon>
 
-      <a routerLink="/minhas-anotacoes" routerLinkActive="active">
+      <a class="btn-aside" routerLink="/minhas-anotacoes" routerLinkActive="active">
         <fa-icon [icon]="faNotes"></fa-icon>
         Anotações
       </a>
 
-      <a routerLink="/login" routerLinkActive="active">
+      <a class="btn-aside" routerLink="/login" routerLinkActive="active">
         <fa-icon [icon]="faSignIn"></fa-icon>
         Login
       </a>
 
-      <a routerLink="/cadastrar" routerLinkActive="active">
+      <a class="btn-aside" routerLink="/cadastrar" routerLinkActive="active">
         <fa-icon [icon]="faUserPlus"></fa-icon>
         Cadastrar-se
       </a>
 
-      <a routerLink="/ajuda" routerLinkActive="active">
+      <a class="btn-aside" routerLink="/ajuda" routerLinkActive="active">
         <fa-icon [icon]="faQuestion"></fa-icon>
         Ajuda
       </a>

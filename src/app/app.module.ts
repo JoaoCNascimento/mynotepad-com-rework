@@ -16,6 +16,7 @@ import { LoaderProviderInterceptor } from './interceptors/loader.interceptor';
 import { ManutencaoComponent } from './components/manutencao/manutencao.component';
 import { AjudaComponent } from './components/ajuda/ajuda.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,7 @@ import { AjudaComponent } from './components/ajuda/ajuda.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [
     [

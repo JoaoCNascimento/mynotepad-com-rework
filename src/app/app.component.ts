@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { faBars, faDoorOpen, faMoon, faQuestionCircle, faSignInAlt, faStickyNote, faSun, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
 import { AuthService } from './services/auth.service';
@@ -8,7 +8,8 @@ import { LocalStorageService } from './services/local-storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 
@@ -34,13 +35,19 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     public loaderService: LoaderService,
     public localStorageService: LocalStorageService
-  ) {
-
-  }
+  ) {}
 
   ngOnInit() {
     this.authService.isLogged.subscribe(res => this.isLogged = res);
+    const sessionStatus = new URLSearchParams(window.location.search).get('sessionTimeout');
+    if(sessionStatus === 'true') {
+      this.authService.errMessages('Sessão expirada.')
+    }
+
     this.setCheckboxValue();
+
+    this.hideMenu();
+    this.showMenu();
   }
 
   themeSwitch(e) {
@@ -53,14 +60,14 @@ export class AppComponent implements OnInit {
     let body = $("#app")[0];
     console.log(body);
     if (localStorage.getItem("dark") === null) {
-      this.darkMode = false;
+      this.darkMode =body.classList.add("light"); false;
       body.classList.add("light");
       return checkbox.prop('checked', true);
     }
 
     this.darkMode = true;
     body.classList.add("dark");
-    return checkbox.prop('checked', false)
+    return checkbox.prop('checked', false);
   }
 
   logout() {
@@ -88,12 +95,22 @@ export class AppComponent implements OnInit {
   }
 
   hideMenu() {
+    const hide = () => {
+      let menu = $(".aside");
+
+      $("#close-btn").hide();
+      menu.animate({ right: -400 }, 'fast')
+    }
+
     $(document).ready(() => {
       $("#close-btn").click(() => {
-        let menu = $(".aside");
+        hide();
+      })
+    });
 
-        $("#close-btn").hide();
-        menu.animate({ right: -400 }, 'fast')
+    $(document).ready(() => {
+      $(".btn-aside").click(() => {
+        hide();
       })
     })
   }
@@ -108,6 +125,6 @@ export class AppComponent implements OnInit {
         closebtn.show();
         menu.css("display", "flex");
       })
-    })
+    });
   }
 }
