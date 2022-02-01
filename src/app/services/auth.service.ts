@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,9 +26,10 @@ export class AuthService {
     private toastrService: ToastrService
   ) {
     this.isLogged.next(!!this.token);
+    this.errMessages = this.errMessages.bind(this);
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<any> {
 
     return this.httpClient.post(this.baseUrl, {
       email, password
@@ -46,17 +47,25 @@ export class AuthService {
   }
 
   logout() {
+    this.isLogged.next(false);
     localStorage.removeItem(this.TOKEN);
-    window.location.assign('');
+    window.location.href = '' + '?sessionTimeout=true';
   }
 
   // toastr messages
   errMessages(er) {
-    console.log(er);
-    this.toastrService.error("", "Houve um erro no servidor, tente novamente mais tarde.", {
+    if(er.error)
+      return this.toastrService.error("", er.error.error_message, {
+        closeButton: true,
+        progressBar: true,
+        timeOut: 4000
+      });
+
+    this.toastrService.error("", er, {
       closeButton: true,
       progressBar: true,
       timeOut: 4000
     });
+    
   }
 }
