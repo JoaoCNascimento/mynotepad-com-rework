@@ -21,6 +21,28 @@ form {
   margin-bottom: 5px;
 }
 
+.form-group .form-input {
+  width: 100%;
+}
+
+.form-group .form-input input {
+  width: 100%;
+}
+
+.form-input.password input {
+  position: relative;
+  padding-right: 40px;
+}
+
+.form-input.password fa-icon {
+  position: absolute;
+  color: var(--heading-color);
+  font-size: 1.6rem;
+  right: 25px;
+  cursor: pointer;
+  padding: 5px 0px;
+}
+
 .form-group input {
   font-family: "Urbanist", Arial, sans-serif;
   background: none;
@@ -48,5 +70,5 @@ button {
 
 .ng-invalid.ng-touched:not(form) {
   color: rgb(255, 70, 70);
-  border-color: rgb(255, 70, 70)
+  border-color: rgb(255, 70, 70);
 }
