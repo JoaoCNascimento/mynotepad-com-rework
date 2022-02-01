@@ -13,7 +13,7 @@ export class ModalService {
 
     modal.style.cssText = "display: flex";
     setTimeout(() => {
-      modalBody.style.cssText = "margin-top: 35%";
+      modalBody.style.cssText = "margin-top: 10%";
     }, 150);
   }
 
