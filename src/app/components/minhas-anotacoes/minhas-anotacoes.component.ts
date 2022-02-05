@@ -91,7 +91,7 @@ export class MinhasAnotacoesComponent implements OnInit {
 
   setColor(e) {
     this.color = e;
-
+    console.log(this.color);
     if(this.title != null || this.title != "") {
       this.localNotesFilter = this.localNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0].toLowerCase() === this.color);
       this.userNotesFilter = this.userNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0].toLowerCase() === this.color);
@@ -106,5 +106,6 @@ export class MinhasAnotacoesComponent implements OnInit {
     this.localNotesFilter = this.localNotes;
     this.userNotesFilter = this.userNotes;
     this.color = "";
+    this.title = "";
   }
 }

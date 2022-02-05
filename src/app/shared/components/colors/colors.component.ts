@@ -28,7 +28,6 @@ export class ColorsComponent implements OnInit {
   }
 
   colorChange(e) {
-    // console.log(e.target.className);
-    return this.color.emit(e.target.className);
+    return this.color.emit(e.target.firstChild.innerText);
   }
 }
