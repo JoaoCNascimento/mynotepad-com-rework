@@ -80,8 +80,8 @@ export class MinhasAnotacoesComponent implements OnInit {
     }
     
     if(this.color != "" && this.color != null) {
-      this.localNotesFilter = this.localNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0] === this.color);
-      this.userNotesFilter = this.userNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0] === this.color);
+      this.localNotesFilter = this.localNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0].toLowerCase() === this.color);
+      this.userNotesFilter = this.userNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0].toLowerCase() === this.color);
       return;
     }
 
@@ -93,13 +93,13 @@ export class MinhasAnotacoesComponent implements OnInit {
     this.color = e;
 
     if(this.title != null || this.title != "") {
-      this.localNotesFilter = this.localNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0] === this.color);
-      this.userNotesFilter = this.userNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0] === this.color);
+      this.localNotesFilter = this.localNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0].toLowerCase() === this.color);
+      this.userNotesFilter = this.userNotes.filter(note => note.title.toLowerCase().includes(this.title.toLowerCase()) && note.color.split(' ')[0].toLowerCase() === this.color);
       return;
     }
 
-    this.localNotesFilter = this.localNotes.filter(note => note.color.split(' ')[0] === this.color);
-    this.userNotesFilter = this.userNotes.filter(note => note.color.split(' ')[0] === this.color);
+    this.localNotesFilter = this.localNotes.filter(note => note.color.split(' ')[0].toLowerCase() === this.color);
+    this.userNotesFilter = this.userNotes.filter(note => note.color.split(' ')[0].toLowerCase() === this.color);
   }
 
   clearFilters() {
