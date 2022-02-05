@@ -23,7 +23,6 @@ export class EditarNotaComponent implements OnInit {
   color = "blue";
 
   note: Note;
-
   form: FormGroup;
 
   constructor(
@@ -36,6 +35,11 @@ export class EditarNotaComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      title: [],
+      content: []
+    });
+    
     this.authService.isLogged.subscribe(val => {
 
       this.note = this.ls.findOne(this.route.snapshot.params['id']);
