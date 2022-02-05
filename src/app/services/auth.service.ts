@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
 
   isLogged = new BehaviorSubject<boolean>(false);
 
-  baseUrl = "http://localhost:8089/api/v1/user/login";
+  baseUrl = environment.hostUrl + 'user/login';
 
   private readonly TOKEN = "token";
 

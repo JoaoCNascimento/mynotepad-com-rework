@@ -4,13 +4,13 @@ import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { User } from '../models/User';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserApiService {
-
-  private baseUrl: string = "http://localhost:8089/api/v1/user";
+  baseUrl = environment.hostUrl + 'login';
 
   private readonly TOKEN = "token";
 
