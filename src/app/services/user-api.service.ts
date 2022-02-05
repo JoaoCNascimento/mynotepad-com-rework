@@ -22,8 +22,6 @@ export class UserApiService {
   ) { }
 
   create(user: User): Observable<any> {
-    console.log(user);
-
     return this.httpClient.post(this.baseUrl, {
       name: user.name,
       email: user.email,
