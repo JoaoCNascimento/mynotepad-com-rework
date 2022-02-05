@@ -210,14 +210,15 @@ footer {
   display: flex;
   flex-direction: column;
   background-color: var(--background-color-variation);
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
   margin: auto;
-  height: 300px;
+  height: 360px;
   border-radius: 5px;
   overflow-y: auto;
   margin-top: -105%;
   transition: 0.5s;
+  padding: 5px;
 }
 
 .modal-body h4 {
@@ -226,6 +227,11 @@ footer {
   color: var(--heading-color);
   font-weight: 300;
   font-size: 1.3rem;
+}
+
+.modal-body #color-panel div {
+  width: 25px;
+  height: 30px;
 }
 
 .modal-body .content {
