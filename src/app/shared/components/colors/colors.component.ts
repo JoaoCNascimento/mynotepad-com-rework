@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-colors',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ColorsComponent implements OnInit {
 
+  @Input() showParagraph = true;
   @Output() color: EventEmitter<any> = new EventEmitter<any>();
 
   colors = [
@@ -27,7 +28,6 @@ export class ColorsComponent implements OnInit {
   }
 
   colorChange(e) {
-    // console.log(e.target.className);
-    return this.color.emit(e.target.className);
+    return this.color.emit(e.target.firstChild.innerText);
   }
 }

@@ -7,13 +7,14 @@ import { Note } from '../models/Note';
 
 import { AuthService } from './auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotesApiService {
 
-  baseUrl = "http://localhost:8089/api/v1/notes";
+  baseUrl = environment.hostUrl + "notes";
 
   constructor(
     private httpClient: HttpClient,
@@ -25,7 +26,7 @@ export class NotesApiService {
   }
 
   get_notes() {
-    return this.httpClient.get<Note[]>(this.baseUrl).pipe(
+    return this.httpClient.get<any>(this.baseUrl).pipe(
       tap(res => { 
         this.successMessage("Anotações carregadas com sucesso!");
         return res}),
@@ -91,5 +92,6 @@ export class NotesApiService {
     }
 
     this.toastrService.error("Houve um erro ao tentar acessar o servidor, verifique sua conexão.");
+    return localStorage.removeItem(this.authService.token);
   }
 }

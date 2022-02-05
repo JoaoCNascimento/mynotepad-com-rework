@@ -1,5 +1,6 @@
-<h2>Cor da anotação</h2>
+<h2 *ngIf="showParagraph">Cor da anotação</h2>
 <div id="color-panel">
   <div *ngFor="let color of colors" class="{{color.value}}" (click)="colorChange($event)">
+    <p hidden>{{color.value}}</p>
   </div>
 </div>

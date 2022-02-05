@@ -11,9 +11,13 @@
       <p>Anotações locais</p>
     </div>
   </div>
-  <app-note-table *ngIf="local" [notes]="localNotes"></app-note-table>
+  <app-note-table *ngIf="local" [notes]="localNotesFilter"></app-note-table>
   <br>
-  <app-note-table *ngIf="!local" [notes]="userNotes"></app-note-table>
+  <app-note-table *ngIf="!local" [notes]="userNotesFilter"></app-note-table>
+</div>
+
+<div (click)="modalService.revealModal()" class="filter-button">
+  <fa-icon [icon]="faFilter"></fa-icon>
 </div>
 
 <a routerLink="/ajuda">
@@ -21,3 +25,23 @@
     <fa-icon [icon]="faQuestion"></fa-icon>
   </div>
 </a>
+
+<div class="modal-container" #template>
+  <div class="modal-body">
+    <fa-icon (click)="modalService.hideModal()" class="modal-close-button" [icon]="faTimes"></fa-icon>
+    <h4>Filtros</h4>
+    <div class="content">
+      <div>
+        <h5>Filtrar por Título:</h5>
+        <input class="filter-input" [(ngModel)]="title" (keyup)="titleFilter($event)" type="text">
+      </div>
+      <!--  -->
+      <div>
+        <h5>Filtrar por cor:</h5>
+        <app-colors (color)="setColor($event)" [showParagraph]="false"></app-colors>
+      </div>
+      <!--  -->
+      <button (click)="clearFilters()" class="btn">Limpar filtros</button>
+    </div>
+  </div>
+</div>

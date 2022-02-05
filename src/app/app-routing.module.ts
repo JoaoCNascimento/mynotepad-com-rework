@@ -9,10 +9,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   {
     path: 'cadastrar',
-    // loadChildren: () => import("./modules/cadastrar/cadastrar.module")
-    //   .then(m => m.CadastrarModule),
-    // canLoad: [AuthGuard],
-    redirectTo: "manutencao"
+    loadChildren: () => import("./modules/cadastrar/cadastrar.module")
+      .then(m => m.CadastrarModule),
+    canLoad: [AuthGuard],
+    // redirectTo: "manutencao"
   },
   {
     path: 'login',
