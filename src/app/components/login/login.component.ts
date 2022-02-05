@@ -6,6 +6,7 @@ import { catchError, map } from 'rxjs/operators';
 import { UserApiService } from 'src/app/services/user-api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,30 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
     this.configurateForm();
+    const confirmationWindow = new URLSearchParams(window.location.search).get('confirmationWindow');
+    const accountConfirmed = new URLSearchParams(window.location.search).get('accountConfirmed');
+    
+    if(confirmationWindow === 'true') {
+      this.toastrService.info("",'Verifique sua conta através do link enviado ao seu email.', {
+        timeOut: 10000,
+        progressBar: true,
+        closeButton: true
+      });
+    }
+
+    if(accountConfirmed === 'true') {
+      this.toastrService.success("",'Conta ativada com sucesso!', {
+        timeOut: 10000,
+        progressBar: true,
+        closeButton: true
+      });
+    }
   }
 
   configurateForm() {

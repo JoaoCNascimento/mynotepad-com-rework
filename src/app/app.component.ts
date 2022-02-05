@@ -41,7 +41,7 @@ export class AppComponent implements OnInit {
     this.authService.isLogged.subscribe(res => this.isLogged = res);
     const sessionStatus = new URLSearchParams(window.location.search).get('sessionTimeout');
     if(sessionStatus === 'true') {
-      this.authService.errMessages('Sessão expirada.')
+      this.authService.errMessages('Sessão expirada.');
     }
 
     this.setCheckboxValue();
