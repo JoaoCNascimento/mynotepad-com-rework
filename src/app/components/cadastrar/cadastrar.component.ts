@@ -88,15 +88,7 @@ export class CadastrarComponent implements OnInit {
         password: this.form.get('password').value
       }
 
-      this.userApiService.create(user).subscribe(res => {
-        if (res.hasOwnProperty("error_message")) {
-          this.form.get('email').markAsPending();
-          return this.toastr.error(res.error_message);
-        }
-
-        this.toastr.success("Cadastrado com sucesso!");
-        return window.location.assign('minhas-anotacoes');
-      });
+      this.userApiService.create(user).subscribe();
     }
     else {
       this.form.markAllAsTouched();
