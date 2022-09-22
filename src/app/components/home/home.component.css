@@ -1,3 +1,11 @@
+#img-container{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  overflow-x: hidden;
+}
+
+/**/
 #container {
   display: flex;
   padding: 15px;
@@ -5,7 +13,17 @@
   align-items: center;
 }
 
-div:not(#container, #link-container) {
+img {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+div:not(#container, #link-container, #img-container) {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,7 +35,7 @@ div:not(#container, #link-container) {
 
 div h2 {
   font-family: "Quicksand", Arial, sans-serif;
-  text-align: center;
+  text-align: left;
   margin-bottom: 10px;
   color: var(--heading-color);
 }
@@ -57,6 +75,33 @@ a {
   transition: 0.25s;
 }
 
+.right-slide {
+  animation: rightSlide 0.5s;
+}
+
+.left-slide {
+  animation: leftSlide 0.5s;
+}
+
+@keyframes rightSlide {
+  0% {
+    margin-left: 100%;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
+}
+
+@keyframes leftSlide {
+  0% {
+    margin-left: 0%;
+  }
+  100% {
+    margin-left: -100%;
+  }
+}
+
 @keyframes background-transition {
   0% {
     background-color: var(--blue);
@@ -79,17 +124,31 @@ a {
   }
 }
 
-@media screen and (max-width: 640px) {
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@media screen and (max-width: 740px) {
   #container {
     flex-direction: column;
   }
 
   div:not(#container, #link-container) {
-    width: 85%;
+    width: 100% !important;
+    margin-top: 25px;
   }
 
   #link-container {
     width: 85%;
   }
 
+  img {
+    width: 100%;
+    height: 30vh;
+  }
+
+  p {
+    text-align: justify;
+  }
 }

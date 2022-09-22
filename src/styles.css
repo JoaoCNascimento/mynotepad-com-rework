@@ -27,14 +27,14 @@
   --pink-dark: #c72b79;
   --black: #111111;
 
-  --background-color: #2c2c2c;
-  --background-color-variation: #1f1f1f;
+  --background-color: #0e0c11;
+  --background-color-variation: #1d1922;
   --std-text-color: #1c1c1c;
   --title-color: black;
-  --heading-color: #fff;
+  --heading-color: rgba(245, 245, 245, 0.89);
   --p-color: rgba(255, 255, 255, 0.733);
-  --note-table-background: #2c2c2c;
-  --btn-new: rgb(100, 100, 100);
+  --note-table-background: #0e0c11;
+  --btn-new: rgb(66, 66, 66);
 
   --primary-font: Quicksand, Arial, sans-serif;
   --secondary-font: Urbanist, Arial, sans-serif;
@@ -44,7 +44,7 @@
   --background-color-variation: #fff;
   /* --background-color-variation: rgb(251, 122, 122); */
   /* --background-color: rgb(180, 180, 180); */
-  --background-color: rgb(251, 122, 122);
+  --background-color: rgb(247, 245, 155);
   --btn-new: var(--background-color);
   --std-text-color: #1c1c1c;
   --title-color: rgb(47, 196, 255);
@@ -94,7 +94,14 @@ header div .active {
   color: var(--std-text-color);
 }
 
+#routes {
+  min-height: 100%;
+}
+
 footer {
+  position: relative;
+  bottom: 0%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,6 +109,7 @@ footer {
   font-family: var(--primary-font);
   margin-bottom: 15px;
   color: var(--heading-color);
+  margin-top: 50px;
 }
 
 /* note colors */
@@ -184,6 +192,14 @@ footer {
 .orange .description {
   background: var(--orange);
   color: white;
+}
+
+.title {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.description {
+  border-radius: 0px 0px 10px 10px;
 }
 
 @media screen and (max-width: 980px) {
