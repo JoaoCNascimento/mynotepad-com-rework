@@ -55,6 +55,13 @@ export class AuthService {
 
   // toastr messages
   errMessages(er) {
+    if(er.statusText.toLocaleLowerCase() == "Unknown Error".toLocaleLowerCase())
+      return this.toastrService.error("", "Houve um erro ao tentar comunicar-se com o servidor, tente novamente mais tarde.", {
+        closeButton: true,
+        progressBar: true,
+        timeOut: 5000
+      });
+    
     if(er.error)
       return this.toastrService.error("", er.error.error_message, {
         closeButton: true,
