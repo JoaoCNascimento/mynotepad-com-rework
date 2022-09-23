@@ -31,7 +31,6 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-
     return this.httpClient.post(this.baseUrl, {
       email, password
     }).pipe(
@@ -50,7 +49,8 @@ export class AuthService {
   logout() {
     this.isLogged.next(false);
     localStorage.removeItem(this.TOKEN);
-    window.location.href = '' + '?sessionTimeout=true';
+    localStorage.setItem("sessionTimeout", "true");
+    window.location.assign('/');
   }
 
   // toastr messages

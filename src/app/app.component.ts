@@ -39,9 +39,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.authService.isLogged.subscribe(res => this.isLogged = res);
-    const sessionStatus = new URLSearchParams(window.location.search).get('sessionTimeout');
+    const sessionStatus = localStorage.getItem('sessionTimeout');
     if(sessionStatus === 'true') {
       this.authService.errMessages('Sessão expirada.');
+      localStorage.removeItem('sessionTimeout');
     }
 
     this.setCheckboxValue();
