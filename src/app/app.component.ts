@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { faBars, faDoorOpen, faMoon, faQuestionCircle, faSignInAlt, faStickyNote, faSun, faTimes, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import * as $ from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from './services/auth.service';
 import { LoaderService } from './services/loader.service';
 import { LocalStorageService } from './services/local-storage.service';
@@ -34,16 +35,22 @@ export class AppComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public loaderService: LoaderService,
-    public localStorageService: LocalStorageService
+    public localStorageService: LocalStorageService,
+    public toastrService: ToastrService
   ) {}
 
   ngOnInit() {
     this.authService.isLogged.subscribe(res => this.isLogged = res);
-    const sessionStatus = localStorage.getItem('sessionTimeout');
-    if(sessionStatus === 'true') {
-      this.authService.errMessages('Sessão expirada.');
-      localStorage.removeItem('sessionTimeout');
+    const expiredToken = localStorage.getItem('sessionTimeout');
+
+    if(expiredToken) {
+      if(expiredToken === 'true') 
+        this.authService.errMessages('Sessão expirada.');
+      else 
+        this.toastrService.info('Sessão encerrada...')
     }
+
+    localStorage.removeItem('sessionTimeout');
 
     this.setCheckboxValue();
 
@@ -72,7 +79,7 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
+    this.authService.logout(true);
   }
 
   /*

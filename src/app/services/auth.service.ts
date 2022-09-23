@@ -46,16 +46,25 @@ export class AuthService {
 
   }
 
-  logout() {
+  logout(isUserLoggingOut=false) {
     this.isLogged.next(false);
-    localStorage.removeItem(this.TOKEN);
-    localStorage.setItem("sessionTimeout", "true");
-    window.location.assign('/');
+
+    if (isUserLoggingOut)
+    {
+      localStorage.removeItem(this.TOKEN);
+      localStorage.setItem("sessionTimeout", "false");
+      window.location.assign('/');
+    }
+    else {
+      localStorage.removeItem(this.TOKEN);
+      localStorage.setItem("sessionTimeout", "true");
+      window.location.assign('/');
+    }
   }
 
   // toastr messages
   errMessages(er) {
-    if(er.statusText.toLocaleLowerCase() == "Unknown Error".toLocaleLowerCase())
+    if(er?.statusText?.toLocaleLowerCase() == "Unknown Error".toLocaleLowerCase())
       return this.toastrService.error("", "Houve um erro ao tentar comunicar-se com o servidor, tente novamente mais tarde.", {
         closeButton: true,
         progressBar: true,
