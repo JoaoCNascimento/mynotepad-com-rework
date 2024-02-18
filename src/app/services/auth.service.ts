@@ -50,12 +50,12 @@ export class AuthService {
   logout() {
     this.isLogged.next(false);
     localStorage.removeItem(this.TOKEN);
-    window.location.href = '' + '?sessionTimeout=true';
+    localStorage.setItem('sessionTimeout', 'true');
   }
 
   // toastr messages
   errMessages(er) {
-    if(er.statusText.toLocaleLowerCase() == "Unknown Error".toLocaleLowerCase())
+    if(er.statusText && er.statusText!.toLocaleLowerCase() == "Unknown Error".toLocaleLowerCase())
       return this.toastrService.error("", "Houve um erro ao tentar comunicar-se com o servidor, tente novamente mais tarde.", {
         closeButton: true,
         progressBar: true,
