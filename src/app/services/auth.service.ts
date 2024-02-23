@@ -51,6 +51,7 @@ export class AuthService {
     this.isLogged.next(false);
     localStorage.removeItem(this.TOKEN);
     localStorage.setItem('sessionTimeout', 'true');
+    window.location.assign("/");
   }
 
   // toastr messages
