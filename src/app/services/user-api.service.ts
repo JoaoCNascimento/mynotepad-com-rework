@@ -28,9 +28,12 @@ export class UserApiService {
       birthDate: user.birthDate,
       password: user.password
     }).pipe(
-      tap(res => {this.toastrService.success("",'Cadastrado com sucesso!'); return this.router.navigate(['login'], {queryParams: {
-        'confirmationWindow': true
-      }}); }),
+      tap(res => {this.toastrService.success("",'Cadastrado com sucesso!'); return this.router.navigate(['login'], 
+      // TODO => Implementar fluxo de envio de emails de confirmação no backend
+      // {queryParams: {
+      //   'confirmationWindow': true
+      // }}
+      ); }),
       catchError(er => { this.errMessages(er); console.log(er); return er })
     );
   }
